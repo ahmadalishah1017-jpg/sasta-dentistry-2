@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sasti Dentistry — Premium Dental Clinic in Rawalpindi</title>
+<meta name="description" content="Sasti Dentistry — a 5.0-rated dental clinic on Range Road, Shalley Valley, Rawalpindi. Affordable, professional dental care. Call 0332 3331991.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   SASTI DENTISTRY
+   Theme: Deep Emerald (after the Medideg dental concept)
+   Every colour lives in the :root block below — swap that
+   block alone to re-skin the entire site.
+   ========================================================= */
+
+:root{
+  /* --- surfaces: near-black green -> mid emerald --- */
+  --bg:#0A1510;
+  --ink:#0C1A14;
+  --ink-2:#0F2019;
+  --ink-3:#14291F;
+  --alt:#123326;
+  --alt-2:#18402F;
+  --deep:#06110C;
+
+  /* --- accent: pale mint / white --- */
+  --accent:#A8D5BE;
+  --accent-rgb:168,213,190;
+  --accent-lt:#DFEFE6;
+  --accent-dk:#4E9B77;
+  --accent-grad:linear-gradient(135deg,#FFFFFF 0%,#CFE7DA 46%,#7FBFA0 100%);
+  --on-accent:#08150F;
+
+  /* --- text --- */
+  --white:#F1F8F4;
+  --muted:#A8BFB3;
+  --muted-2:#7E9A8C;
+
+  /* --- lines & effects --- */
+  --line:rgba(var(--accent-rgb),.20);
+  --line-soft:rgba(255,255,255,.08);
+  --shadow:0 30px 70px -30px rgba(0,0,0,.85);
+  --glow:0 0 0 1px rgba(var(--accent-rgb),.26), 0 18px 50px -22px rgba(var(--accent-rgb),.35);
+  --danger:#E9807E;
+  --ok:#5FD79B;
+
+  --r-sm:10px;
+  --r:16px;
+  --r-lg:26px;
+
+  --ff-display:'Cormorant Garamond', 'Times New Roman', serif;
+  --ff-body:'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --sp:clamp(70px, 9vw, 130px);
+}
+
+/* ---------- RESET ---------- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--ff-body);
+  font-weight:300;
+  font-size:16.5px;
+  line-height:1.75;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--accent);color:var(--on-accent)}
+
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--deep)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--accent),var(--accent-dk));border-radius:20px}
+
+.container{width:min(1240px, 92vw);margin-inline:auto}
+.ic{width:1em;height:1em;fill:currentColor;flex:none}
+
+/* ---------- TYPE ---------- */
+.h2{
+  font-family:var(--ff-display);
+  font-weight:600;
+  font-size:clamp(2.1rem, 4.4vw, 3.5rem);
+  line-height:1.12;
+  letter-spacing:-.01em;
+}
+.accent-text{
+  background:var(--accent-grad);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  font-style:italic;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  font-weight:500;color:var(--accent);
+  padding:.5rem 1.05rem;border:1px solid var(--line);border-radius:100px;
+  background:rgba(var(--accent-rgb),.07);margin-bottom:1.4rem;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+
+.sec-head{text-align:center;max-width:760px;margin:0 auto clamp(48px,6vw,76px)}
+.sec-head__sub{color:var(--muted);margin-top:1.1rem;font-size:1.03rem}
+
+.section{padding:var(--sp) 0;position:relative}
+.section--alt{
+  background:
+    radial-gradient(900px 420px at 50% 0%, rgba(var(--accent-rgb),.10), transparent 70%),
+    var(--alt);
+  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
+}
+
+/* ---------- BUTTONS ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.85rem 1.7rem;border-radius:100px;border:1px solid transparent;
+  font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;position:relative;overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, color .3s, background .3s, border-color .3s;
+}
+.btn .ic{width:1.05em;height:1.05em;transition:transform .35s}
+.btn:hover .ic{transform:translateX(4px)}
+.btn--lg{padding:1.05rem 2.15rem;font-size:.86rem}
+.btn--block{width:100%}
+
+.btn--primary{
+  background:var(--accent-grad);color:var(--on-accent);font-weight:600;
+  box-shadow:0 14px 34px -14px rgba(var(--accent-rgb),.55);
+}
+.btn--primary::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 20%,rgba(255,255,255,.7),transparent 80%);
+  transform:translateX(-120%);transition:transform .7s;
+}
+.btn--primary:hover{transform:translateY(-3px);box-shadow:0 22px 46px -16px rgba(var(--accent-rgb),.7)}
+.btn--primary:hover::after{transform:translateX(120%)}
+
+.btn--ghost{border-color:var(--line);color:var(--white);background:rgba(255,255,255,.04);backdrop-filter:blur(8px)}
+.btn--ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);background:rgba(var(--accent-rgb),.10)}
+
+/* ---------- PRELOADER ---------- */
+.preloader{
+  position:fixed;inset:0;z-index:9999;background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  transition:opacity .6s ease, visibility .6s;
+}
+.preloader.is-done{opacity:0;visibility:hidden}
+.preloader__mark svg{animation:pulse 1.4s ease-in-out infinite}
+.preloader__text{
+  font-family:var(--ff-display);font-size:1.35rem;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--accent);opacity:.8;
+}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.12);opacity:1}}
+
+/* ---------- TOPBAR ---------- */
+.topbar{background:var(--deep);border-bottom:1px solid var(--line-soft);font-size:.78rem;position:relative;z-index:60}
+.topbar__in{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:44px}
+.topbar__left,.topbar__right{display:flex;align-items:center;gap:1rem;color:var(--muted-2)}
+.topbar__item{display:inline-flex;align-items:center;gap:.45rem;white-space:nowrap}
+.topbar__item .ic{color:var(--accent)}
+.topbar__sep{width:1px;height:14px;background:var(--line-soft)}
+.topbar__call{display:inline-flex;align-items:center;gap:.45rem;color:var(--accent);font-weight:500;letter-spacing:.04em}
+.topbar__call:hover{color:var(--accent-lt)}
+
+.badge-live{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.25rem .7rem;border:1px solid var(--line);border-radius:100px;
+  background:rgba(255,255,255,.06);color:var(--accent-lt);
+  font-size:.72rem;letter-spacing:.06em;white-space:nowrap;backdrop-filter:blur(6px);
+}
+.badge-live i{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);animation:blink 1.8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ---------- HEADER ---------- */
+.header{position:sticky;top:0;z-index:100;background:rgba(10,21,16,.65);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:.4s}
+.header.is-stuck{background:rgba(8,18,13,.94);border-bottom-color:var(--line);box-shadow:0 12px 40px -20px #000}
+.header__in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:82px;transition:height .4s}
+.header.is-stuck .header__in{height:70px}
+
+.brand{display:flex;align-items:center;gap:.85rem}
+.brand__icon{width:42px;height:42px;color:var(--accent);flex:none;transition:transform .5s}
+.brand:hover .brand__icon{transform:rotate(-8deg) scale(1.06)}
+.brand__text strong{display:block;font-family:var(--ff-display);font-size:1.42rem;font-weight:600;letter-spacing:.02em;line-height:1.1}
+.brand__text strong em{color:var(--accent);font-style:italic}
+.brand__text small{display:block;font-size:.63rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2);margin-top:1px}
+
+.nav{display:flex;align-items:center;gap:.35rem}
+.nav__link{
+  position:relative;padding:.55rem .85rem;font-size:.82rem;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted);transition:color .3s;
+}
+.nav__link::after{
+  content:"";position:absolute;left:.85rem;right:.85rem;bottom:.25rem;height:1px;
+  background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .35s;
+}
+.nav__link:hover,.nav__link.is-active{color:var(--accent)}
+.nav__link:hover::after,.nav__link.is-active::after{transform:scaleX(1);transform-origin:left}
+.nav__cta{margin-left:.9rem;padding:.7rem 1.35rem;font-size:.74rem}
+
+.burger{display:none;width:42px;height:42px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;cursor:pointer;padding:11px 10px}
+.burger span{display:block;height:1.6px;background:var(--accent);border-radius:2px;transition:.35s}
+.burger span+span{margin-top:5px}
+.burger.is-open span:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+.burger.is-open span:nth-child(2){opacity:0}
+.burger.is-open span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;overflow:hidden;padding:clamp(56px,7vw,96px) 0 0;isolation:isolate;
+  background:
+    radial-gradient(1000px 760px at 10% 82%, #1B5540 0%, rgba(27,85,64,0) 62%),
+    radial-gradient(760px 560px at 92% 2%, #071310 0%, rgba(7,19,16,0) 60%),
+    var(--bg);
+}
+.hero__glow{
+  position:absolute;top:-26%;right:-10%;width:min(880px,90vw);aspect-ratio:1;z-index:-2;
+  background:radial-gradient(circle, rgba(var(--accent-rgb),.16), rgba(var(--accent-rgb),.04) 45%, transparent 68%);
+  filter:blur(20px);animation:float 12s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,26px)}}
+.hero__grid-lines{
+  position:absolute;inset:0;z-index:-3;opacity:.45;
+  background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:70px 70px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 20%, #000 20%, transparent 72%);
+  mask-image:radial-gradient(ellipse at 50% 20%, #000 20%, transparent 72%);
+}
+.hero__in{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;padding-bottom:clamp(56px,7vw,90px)}
+.hero__title{
+  font-family:var(--ff-display);font-weight:600;
+  font-size:clamp(3rem,7.4vw,6rem);line-height:.98;letter-spacing:-.02em;margin-bottom:1.6rem;
+}
+.hero__lead{color:var(--muted);font-size:clamp(1rem,1.25vw,1.12rem);max-width:56ch;margin-bottom:2.3rem}
+.hero__actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2.6rem}
+.hero__trust{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;padding-top:1.7rem;border-top:1px solid var(--line-soft)}
+.hero__trust p{font-size:.85rem;color:var(--muted-2);line-height:1.55}
+.hero__trust strong{color:var(--white)}
+.trust__stars,.score__stars{display:flex;gap:3px}
+.star{width:17px;height:17px;fill:var(--accent);filter:drop-shadow(0 0 5px rgba(var(--accent-rgb),.5))}
+
+.hero__visual{position:relative;display:grid;place-items:center;min-height:440px}
+.hero__ring{
+  position:absolute;width:min(430px,88%);aspect-ratio:1;border-radius:50%;
+  border:1px solid var(--line);
+  box-shadow:inset 0 0 90px rgba(var(--accent-rgb),.10);
+  animation:spin 34s linear infinite;
+}
+.hero__ring::before,.hero__ring::after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(var(--accent-rgb),.22)}
+.hero__ring::before{inset:-34px}
+.hero__ring::after{inset:38px;border-style:solid;border-color:rgba(var(--accent-rgb),.12)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.hero__card{
+  position:relative;width:min(370px,100%);
+  background:linear-gradient(160deg, rgba(255,255,255,.10), rgba(6,17,12,.55));
+  border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:1.3rem;box-shadow:var(--shadow);backdrop-filter:blur(14px);
+  animation:bob 6s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.hero__card-top{display:flex;justify-content:space-between;gap:.5rem;margin-bottom:.5rem}
+.chip{padding:.32rem .85rem;border-radius:100px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(var(--accent-rgb),.16);color:var(--accent-lt);border:1px solid var(--line)}
+.chip--muted{background:rgba(255,255,255,.05);color:var(--muted-2);border-color:var(--line-soft)}
+
+.tooth-art{position:relative;padding:.6rem 2.6rem 1.1rem}
+.tooth-art svg{width:100%;filter:drop-shadow(0 22px 40px rgba(0,0,0,.55))}
+.sparkle{position:absolute;color:var(--accent-lt);font-size:1.15rem;animation:twinkle 2.4s ease-in-out infinite}
+.sparkle--1{top:14%;left:12%}
+.sparkle--2{top:32%;right:12%;animation-delay:.7s;font-size:.85rem}
+.sparkle--3{bottom:20%;left:20%;animation-delay:1.3s;font-size:.7rem}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.75)}50%{opacity:1;transform:scale(1.2)}}
+
+.hero__card-foot{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;padding-top:1rem;border-top:1px solid var(--line-soft);text-align:center}
+.hero__card-foot b{display:block;font-family:var(--ff-display);font-size:1.32rem;color:var(--accent)}
+.hero__card-foot span{font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)}
+
+.hero__marquee{border-block:1px solid var(--line-soft);background:var(--deep);overflow:hidden;padding:.95rem 0}
+.marquee__track{display:flex;align-items:center;gap:2.4rem;width:max-content;animation:slide 42s linear infinite}
+.hero__marquee:hover .marquee__track{animation-play-state:paused}
+.marquee__track span{font-family:var(--ff-display);font-size:1.32rem;font-style:italic;color:rgba(241,248,244,.32);white-space:nowrap}
+.marquee__track i{color:var(--accent);font-size:.7rem;font-style:normal}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- STATS ---------- */
+.stats{background:var(--ink-2);border-bottom:1px solid var(--line-soft)}
+.stats__in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft)}
+.stat{background:var(--ink-2);padding:2.6rem 1rem;text-align:center;transition:background .4s}
+.stat:hover{background:var(--ink-3)}
+.stat b{display:block;font-family:var(--ff-display);font-size:clamp(2.2rem,4vw,3.1rem);font-weight:600;line-height:1;
+  background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.stat span{display:block;margin-top:.55rem;font-size:.73rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2)}
+
+/* ---------- ABOUT ---------- */
+.about__in{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2.4rem,5vw,5rem);align-items:center}
+.about__frame{position:relative;padding-bottom:3rem;padding-right:2.5rem}
+.about__img{
+  border-radius:var(--r-lg);border:1px solid var(--line);
+  background:linear-gradient(150deg,var(--ink-3),var(--ink));
+  display:grid;place-content:center;gap:.9rem;justify-items:center;
+  color:var(--muted-2);position:relative;overflow:hidden;
+}
+.about__img::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(var(--accent-rgb),.14),transparent 60%)}
+.about__img .ph{width:38px;height:38px;fill:var(--accent);opacity:.5}
+.about__img span{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+.about__img--1{aspect-ratio:4/4.6}
+.about__img--2{position:absolute;right:0;bottom:0;width:56%;aspect-ratio:4/3;box-shadow:var(--shadow);background:linear-gradient(150deg,#1B3A2C,var(--ink-2))}
+.about__badge{
+  position:absolute;top:1.6rem;left:-1.2rem;z-index:3;
+  background:var(--accent-grad);color:var(--on-accent);border-radius:var(--r);
+  padding:.9rem 1.15rem;text-align:center;box-shadow:0 18px 40px -18px rgba(var(--accent-rgb),.7);
+}
+.about__badge b{display:block;font-family:var(--ff-display);font-size:1.9rem;font-weight:700;line-height:1}
+.about__badge span{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;line-height:1.3;display:block;margin-top:.2rem}
+
+.about__copy p{color:var(--muted);margin-bottom:1.1rem}
+.about__copy p strong{color:var(--white);font-weight:500}
+.ticks{margin:1.9rem 0 2.3rem;display:grid;gap:.85rem}
+.ticks li{display:flex;align-items:flex-start;gap:.75rem;font-size:.95rem;color:var(--white)}
+.ticks .ic{margin-top:.42rem;width:.9em;height:.9em;color:var(--accent);
+  background:rgba(var(--accent-rgb),.14);border-radius:50%;padding:.28em;box-sizing:content-box}
+
+/* ---------- SERVICE CARDS ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1.35rem}
+.card{
+  position:relative;padding:2.2rem 1.7rem 2rem;border-radius:var(--r-lg);
+  background:linear-gradient(165deg, rgba(255,255,255,.055), rgba(6,17,12,.45));
+  border:1px solid var(--line-soft);overflow:hidden;backdrop-filter:blur(6px);
+  transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s;
+}
+.card::before{
+  content:"";position:absolute;inset:0;opacity:0;transition:opacity .45s;
+  background:radial-gradient(420px 180px at var(--mx,50%) var(--my,0%), rgba(var(--accent-rgb),.16), transparent 70%);
+}
+.card:hover{transform:translateY(-9px);border-color:var(--line);box-shadow:var(--glow)}
+.card:hover::before{opacity:1}
+.card__num{
+  position:absolute;top:1.1rem;right:1.3rem;font-family:var(--ff-display);
+  font-size:2.6rem;font-weight:600;color:rgba(var(--accent-rgb),.16);line-height:1;transition:color .45s;
+}
+.card:hover .card__num{color:rgba(var(--accent-rgb),.34)}
+.card__icon{
+  display:grid;place-items:center;width:56px;height:56px;border-radius:16px;margin-bottom:1.3rem;
+  background:rgba(var(--accent-rgb),.11);border:1px solid var(--line);transition:.45s;
+}
+.card__icon svg{width:27px;height:27px;fill:var(--accent);transition:.45s}
+.card:hover .card__icon{background:var(--accent-grad);transform:rotate(-6deg)}
+.card:hover .card__icon svg{fill:var(--on-accent)}
+.card h3{font-family:var(--ff-display);font-size:1.5rem;font-weight:600;margin-bottom:.6rem;position:relative}
+.card p{color:var(--muted);font-size:.93rem;line-height:1.68;position:relative;margin-bottom:1.2rem}
+.card__price{
+  display:inline-block;font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);padding:.4rem .9rem;border:1px solid var(--line);border-radius:100px;
+  background:rgba(var(--accent-rgb),.07);position:relative;
+}
+.card--feature{border-color:var(--line);background:linear-gradient(165deg, rgba(var(--accent-rgb),.14), rgba(6,17,12,.6))}
+.card__tag{
+  position:absolute;top:0;left:0;background:var(--accent-grad);color:var(--on-accent);
+  font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  padding:.35rem 1rem;border-radius:0 0 12px 0;
+}
+
+/* ---------- WHY ---------- */
+.why__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:var(--r-lg);overflow:hidden}
+.why__item{background:var(--ink);padding:2.5rem 2rem;transition:background .45s}
+.why__item:hover{background:var(--ink-3)}
+.why__ic{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;margin-bottom:1.2rem;background:rgba(var(--accent-rgb),.10);border:1px solid var(--line)}
+.why__ic svg{width:23px;height:23px;fill:var(--accent)}
+.why__item h3{font-family:var(--ff-display);font-size:1.36rem;font-weight:600;margin-bottom:.5rem}
+.why__item p{color:var(--muted);font-size:.92rem}
+.why__item em{color:var(--accent);font-style:italic}
+
+/* ---------- STEPS ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;position:relative}
+.step{position:relative;padding:2.3rem 1.6rem;text-align:center;border:1px solid var(--line-soft);border-radius:var(--r-lg);background:rgba(255,255,255,.04);backdrop-filter:blur(6px);transition:.45s}
+.step:hover{border-color:var(--line);transform:translateY(-7px);box-shadow:var(--glow)}
+.step__n{
+  display:grid;place-items:center;width:56px;height:56px;margin:0 auto 1.15rem;
+  border-radius:50%;background:var(--accent-grad);color:var(--on-accent);
+  font-family:var(--ff-display);font-size:1.6rem;font-weight:700;
+  box-shadow:0 12px 30px -12px rgba(var(--accent-rgb),.7);
+}
+.step h3{font-family:var(--ff-display);font-size:1.32rem;font-weight:600;margin-bottom:.5rem}
+.step p{color:var(--muted);font-size:.9rem}
+
+/* ---------- GALLERY ---------- */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:1rem}
+.g-item{
+  position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line-soft);
+  background:linear-gradient(145deg,var(--ink-3),var(--ink));display:grid;place-items:center;
+  transition:.5s;cursor:pointer;
+}
+.g-item::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(var(--accent-rgb),.16),transparent 65%);opacity:.6;transition:.5s}
+.g-item:hover{border-color:var(--accent);transform:scale(1.015);box-shadow:var(--glow)}
+.g-item:hover::after{opacity:1}
+.g-item--tall{grid-row:span 2}
+.g-item--wide{grid-column:span 2}
+.g-ph{font-family:var(--ff-display);font-size:1.7rem;font-style:italic;color:rgba(var(--accent-rgb),.5);position:relative;z-index:1}
+.g-item figcaption{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.4rem 1.1rem .95rem;
+  background:linear-gradient(transparent,rgba(3,10,7,.94));
+  font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white);
+  transform:translateY(100%);opacity:0;transition:.45s;
+}
+.g-item:hover figcaption{transform:translateY(0);opacity:1}
+.gallery__note{text-align:center;margin-top:1.6rem;font-size:.8rem;color:var(--muted-2)}
+.gallery__note code{color:var(--accent);background:rgba(var(--accent-rgb),.10);padding:.15rem .45rem;border-radius:6px;font-size:.9em}
+
+/* ---------- REVIEWS ---------- */
+.rev__wrap{display:grid;grid-template-columns:320px 1fr;gap:2.2rem;align-items:start}
+.rev__score{
+  padding:2.2rem 1.8rem;border-radius:var(--r-lg);text-align:center;
+  background:linear-gradient(165deg, rgba(255,255,255,.09), rgba(6,17,12,.5));
+  border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(10px);
+}
+.score__big{font-family:var(--ff-display);font-size:4.4rem;font-weight:700;line-height:1;
+  background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.score__stars{justify-content:center;margin:.5rem 0 .7rem}
+.score__count{font-size:.85rem;color:var(--muted-2)}
+.score__count b{color:var(--white);font-weight:500}
+.score__bars{margin:1.5rem 0;display:grid;gap:.5rem}
+.score__bars li{display:grid;grid-template-columns:14px 1fr 22px;align-items:center;gap:.65rem;font-size:.76rem;color:var(--muted-2)}
+.score__bars i{height:6px;border-radius:100px;background:rgba(255,255,255,.08);overflow:hidden;display:block}
+.score__bars b{display:block;height:100%;background:var(--accent-grad);border-radius:100px}
+.score__bars em{font-style:normal;text-align:right}
+.score__verified{display:inline-flex;align-items:center;gap:.5rem;font-size:.74rem;color:var(--accent);
+  border-top:1px solid var(--line-soft);padding-top:1.1rem;width:100%;justify-content:center}
+
+.rev__slider{overflow:hidden}
+.rev__track{display:flex;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.rev{
+  flex:0 0 100%;padding:2.6rem 2.4rem;border-radius:var(--r-lg);
+  background:linear-gradient(165deg, rgba(255,255,255,.055), rgba(6,17,12,.45));
+  border:1px solid var(--line-soft);position:relative;backdrop-filter:blur(6px);
+}
+.rev::before{
+  content:"\201C";position:absolute;top:.4rem;right:1.6rem;
+  font-family:var(--ff-display);font-size:7rem;color:rgba(var(--accent-rgb),.16);line-height:1;
+}
+.rev__stars{color:var(--accent);letter-spacing:.22em;margin-bottom:1.1rem;font-size:1rem}
+.rev p{font-family:var(--ff-display);font-size:clamp(1.1rem,1.7vw,1.42rem);font-style:italic;line-height:1.62;color:var(--white);margin-bottom:1.7rem}
+.rev footer{display:flex;align-items:center;gap:.9rem}
+.rev__av{
+  display:grid;place-items:center;width:46px;height:46px;border-radius:50%;
+  background:var(--accent-grad);color:var(--on-accent);font-weight:600;font-size:1.1rem;flex:none;
+}
+.rev footer b{display:block;font-weight:500;font-size:.98rem}
+.rev footer small{color:var(--muted-2);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase}
+
+.rev__nav{display:flex;align-items:center;gap:1rem;margin-top:1.6rem}
+.rev__btn{
+  width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid var(--line);
+  color:var(--accent);cursor:pointer;display:grid;place-items:center;transition:.35s;
+}
+.rev__btn svg{width:20px;height:20px;fill:currentColor}
+.rev__btn:hover{background:var(--accent-grad);color:var(--on-accent);border-color:transparent;transform:scale(1.06)}
+.rev__dots{display:flex;gap:.5rem;margin-inline:auto}
+.rev__dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.2);cursor:pointer;padding:0;transition:.35s}
+.rev__dots button.is-on{background:var(--accent);width:26px;border-radius:100px}
+.rev__disclaimer{margin-top:1.2rem;font-size:.76rem;color:var(--muted-2)}
+
+/* ---------- CONTACT ---------- */
+.contact__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:2.4rem;align-items:start}
+.contact__info{display:grid;gap:1.9rem}
+.info__row{display:flex;gap:1.1rem;padding:1.6rem;border:1px solid var(--line-soft);border-radius:var(--r);background:rgba(255,255,255,.035);transition:.4s}
+.info__row:hover{border-color:var(--line);background:rgba(255,255,255,.06)}
+.info__ic{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;flex:none;background:rgba(var(--accent-rgb),.11);border:1px solid var(--line)}
+.info__ic svg{width:22px;height:22px;fill:var(--accent)}
+.info__row h4{font-family:var(--ff-display);font-size:1.24rem;font-weight:600;margin-bottom:.35rem}
+.info__row p{color:var(--muted);font-size:.92rem;line-height:1.65}
+.info__row p a:hover{color:var(--accent)}
+.info__link{display:inline-block;margin-top:.6rem;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);transition:.3s}
+.info__link:hover{letter-spacing:.19em}
+.hours{margin:.7rem 0 1rem;display:grid;gap:.5rem}
+.hours li{display:flex;justify-content:space-between;gap:1rem;font-size:.85rem;color:var(--muted);border-bottom:1px dashed var(--line-soft);padding-bottom:.45rem}
+.hours b{color:var(--white);font-weight:400;text-align:right}
+.hours .is-off b{color:var(--danger)}
+
+.contact__form{padding:2.2rem;border:1px solid var(--line);border-radius:var(--r-lg);
+  background:linear-gradient(165deg, rgba(255,255,255,.075), rgba(6,17,12,.5));box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.field{margin-bottom:1.2rem;display:flex;flex-direction:column}
+.field label{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem}
+.field .opt{color:var(--muted-2);text-transform:none;letter-spacing:0}
+.field input,.field select,.field textarea{
+  width:100%;padding:.9rem 1.05rem;border-radius:var(--r-sm);
+  background:rgba(0,0,0,.25);border:1px solid var(--line-soft);
+  color:var(--white);font-size:.94rem;font-weight:300;transition:.3s;
+}
+.field textarea{resize:vertical;min-height:110px}
+.field select{appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23A8D5BE'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .8rem center;background-size:20px;padding-right:2.4rem}
+.field select option{background:#0F2019;color:#F1F8F4}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted-2)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:rgba(var(--accent-rgb),.07);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.14)}
+.field.has-err input{border-color:var(--danger)}
+.err{color:var(--danger);font-size:.76rem;margin-top:.35rem;min-height:1em}
+
+.form__note{margin-top:1rem;font-size:.82rem;color:var(--muted-2);text-align:center}
+.form__note a{color:var(--accent)}
+.form__ok{
+  display:none;align-items:center;gap:.7rem;margin-top:1.1rem;padding:.9rem 1.1rem;
+  border-radius:var(--r-sm);border:1px solid rgba(95,215,155,.4);background:rgba(95,215,155,.1);
+  color:#9DE8C2;font-size:.88rem;
+}
+.form__ok.is-on{display:flex;animation:fadeUp .5s ease both}
+.form__ok .ic{color:var(--ok);width:1.2em;height:1.2em}
+
+/* ---------- CTA ---------- */
+.cta{
+  padding:var(--sp) 0;text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(760px 380px at 50% 50%, rgba(var(--accent-rgb),.14), transparent 70%), var(--alt-2);
+  border-top:1px solid var(--line-soft);
+}
+.cta p{color:var(--muted);margin:1rem auto 2rem;max-width:52ch}
+.cta__actions{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+
+/* ---------- FOOTER ---------- */
+.footer{background:var(--deep);border-top:1px solid var(--line-soft)}
+.footer__in{display:grid;grid-template-columns:1.7fr 1fr 1fr 1.3fr;gap:2.6rem;padding:clamp(48px,6vw,78px) 0}
+.footer__col h4{font-family:var(--ff-display);font-size:1.22rem;font-weight:600;color:var(--accent);margin-bottom:1.1rem}
+.footer__col a{display:block;color:var(--muted-2);font-size:.9rem;padding:.3rem 0;transition:.3s}
+.footer__col a:hover{color:var(--accent);transform:translateX(4px)}
+.brand--foot{margin-bottom:1.1rem}
+.brand--foot .brand__icon{width:38px;height:38px}
+.footer__blurb{color:var(--muted-2);font-size:.9rem;max-width:38ch;margin-bottom:1rem}
+.footer__stars{color:var(--accent);letter-spacing:.18em;font-size:.95rem}
+.footer__stars span{color:var(--muted-2);letter-spacing:.05em;font-size:.8rem;margin-left:.4rem}
+.footer__addr,.footer__hrs{color:var(--muted-2);font-size:.9rem;margin-bottom:.7rem}
+.footer__hrs span{color:var(--danger)}
+.footer__phone{display:inline-block !important;font-family:var(--ff-display);font-size:1.5rem !important;color:var(--accent) !important;margin-bottom:.7rem;letter-spacing:.02em}
+.footer__bar{border-top:1px solid var(--line-soft)}
+.footer__bar-in{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1.4rem 0;font-size:.8rem;color:var(--muted-2)}
+.footer__made a{color:var(--accent)}
+
+/* ---------- FLOATING ---------- */
+.fab{
+  position:fixed;z-index:90;border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:.55rem;
+  border-radius:100px;box-shadow:0 16px 40px -14px rgba(0,0,0,.9);
+  transition:transform .35s, opacity .35s, visibility .35s;
+}
+.fab svg{width:20px;height:20px;fill:currentColor}
+.fab--call{
+  left:22px;bottom:22px;padding:.85rem 1.3rem;
+  background:var(--accent-grad);color:var(--on-accent);font-size:.8rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.fab--call:hover{transform:translateY(-4px) scale(1.03)}
+.fab--top{
+  right:22px;bottom:22px;width:48px;height:48px;justify-content:center;
+  background:rgba(255,255,255,.08);color:var(--accent);border:1px solid var(--line);
+  opacity:0;visibility:hidden;backdrop-filter:blur(10px);
+}
+.fab--top.is-on{opacity:1;visibility:visible}
+.fab--top:hover{background:var(--accent-grad);color:var(--on-accent);transform:translateY(-4px)}
+
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.is-in{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width:1100px){
+  .rev__wrap{grid-template-columns:1fr}
+  .footer__in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:980px){
+  .hero__in{grid-template-columns:1fr;text-align:center}
+  .hero__lead{margin-inline:auto}
+  .hero__actions,.hero__trust{justify-content:center}
+  .hero__visual{order:-1;min-height:auto;margin-bottom:1rem}
+  .eyebrow{margin-inline:auto}
+  .about__in,.contact__grid{grid-template-columns:1fr}
+  .about__frame{max-width:520px;margin-inline:auto}
+  .stats__in{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+  .g-item--wide{grid-column:span 2}
+  .g-item--tall{grid-row:span 1}
+
+  .nav{
+    position:fixed;inset:0 0 0 auto;width:min(320px,84vw);
+    background:rgba(8,20,15,.98);backdrop-filter:blur(20px);
+    border-left:1px solid var(--line);
+    flex-direction:column;align-items:stretch;justify-content:center;gap:.35rem;
+    padding:2rem 1.6rem;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);
+  }
+  .nav.is-open{transform:none}
+  .nav__link{padding:.9rem 1rem;font-size:.95rem;border-bottom:1px solid var(--line-soft)}
+  .nav__link::after{display:none}
+  .nav__cta{margin:1.2rem 0 0;justify-content:center;padding:1rem}
+  .burger{display:block}
+  .topbar__item--hide,.topbar__sep{display:none}
+}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .topbar__left{display:none}
+  .topbar__in{justify-content:center}
+  .brand__text strong{font-size:1.22rem}
+  .brand__text small{font-size:.56rem;letter-spacing:.18em}
+  .hero__marquee{padding:.7rem 0}
+  .marquee__track span{font-size:1.1rem}
+  .stats__in{grid-template-columns:1fr 1fr}
+  .stat{padding:1.9rem .6rem}
+  .f-row{grid-template-columns:1fr;gap:0}
+  .gallery{grid-template-columns:1fr;grid-auto-rows:180px}
+  .g-item--wide{grid-column:span 1}
+  .rev{padding:2rem 1.4rem}
+  .contact__form{padding:1.6rem 1.2rem}
+  .footer__in{grid-template-columns:1fr;gap:2rem}
+  .footer__bar-in{justify-content:center;text-align:center}
+  .about__badge{left:0}
+  .fab--call span{display:none}
+  .fab--call{padding:.95rem;border-radius:50%}
+  .br-sm{display:none}
+}
+
+/* ---------- MOTION PREFERENCE ---------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* ---------- PRINT ---------- */
+@media print{
+  .topbar,.header,.fab,.hero__marquee,.rev__nav,.preloader{display:none !important}
+  body{background:#fff;color:#000}
+}
+
+</style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#129463;</text></svg>">
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader">
+  <div class="preloader__mark">
+    <svg viewBox="0 0 64 64" width="54" height="54" aria-hidden="true">
+      <path d="M32 8c-6 0-8 3-13 3S10 9 8 14c-3 8 1 20 4 28 2 6 4 14 8 14s4-12 8-12h4c4 0 4 12 8 12s6-8 8-14c3-8 7-20 4-26-2-5-6-3-11-3s-7-5-13-5z"
+            fill="none" stroke="#BFE0CD" stroke-width="2.2" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <span class="preloader__text">Sasti Dentistry</span>
+</div>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="container topbar__in">
+    <div class="topbar__left">
+      <span class="topbar__item"><svg class="ic" viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> Range Rd, Shalley Valley, Rawalpindi</span>
+      <span class="topbar__sep"></span>
+      <span class="topbar__item topbar__item--hide"><svg class="ic" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.6 4 2.3-.9 1.6-5.1-3V6h2z"/></svg> Mon &ndash; Sat &middot; 10 AM &ndash; 9 PM</span>
+    </div>
+    <div class="topbar__right">
+      <span class="badge-live"><i></i> Open Now &middot; Closes 9 PM</span>
+      <a href="tel:+923323331991" class="topbar__call"><svg class="ic" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .5 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.5-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1z"/></svg> 0332 3331991</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="container header__in">
+    <a href="#home" class="brand">
+      <span class="brand__icon">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 8c-6 0-8 3-13 3S10 9 8 14c-3 8 1 20 4 28 2 6 4 14 8 14s4-12 8-12h4c4 0 4 12 8 12s6-8 8-14c3-8 7-20 4-26-2-5-6-3-11-3s-7-5-13-5z"
+                fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="brand__text">
+        <strong>Sasti <em>Dentistry</em></strong>
+        <small>Affordable Excellence &middot; Rawalpindi</small>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#home" class="nav__link is-active">Home</a>
+      <a href="#about" class="nav__link">About</a>
+      <a href="#services" class="nav__link">Services</a>
+      <a href="#why" class="nav__link">Why Us</a>
+      <a href="#gallery" class="nav__link">Gallery</a>
+      <a href="#reviews" class="nav__link">Reviews</a>
+      <a href="#contact" class="nav__link">Contact</a>
+      <a href="#book" class="btn btn--primary nav__cta">Book Appointment</a>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero__glow"></div>
+  <div class="hero__grid-lines"></div>
+  <div class="container hero__in">
+    <div class="hero__copy">
+      <span class="eyebrow reveal"><i class="dot"></i> Rated 5.0 on Google &middot; 3 Reviews</span>
+      <h1 class="hero__title reveal">
+        A Smile That<br>
+        <span class="accent-text">Feels Great.</span>
+      </h1>
+      <p class="hero__lead reveal">
+        Premium dental care without the premium price tag. At Sasti Dentistry we combine
+        modern equipment, gentle technique and honest pricing &mdash; right here on Range Road,
+        Rawalpindi.
+      </p>
+
+      <div class="hero__actions reveal">
+        <a href="#book" class="btn btn--primary btn--lg">
+          Book Your Visit
+          <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h12l-4.5-4.5L14 6l7 6-7 6-1.5-1.5L17 12H5z"/></svg>
+        </a>
+        <a href="tel:+923323331991" class="btn btn--ghost btn--lg">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .5 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.5-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1z"/></svg>
+          0332 3331991
+        </a>
+      </div>
+
+      <div class="hero__trust reveal">
+        <div class="trust__stars">
+          <svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.2l1.5-7L2 9.4l7-.8z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.2l1.5-7L2 9.4l7-.8z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.2l1.5-7L2 9.4l7-.8z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.2l1.5-7L2 9.4l7-.8z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.2l1.5-7L2 9.4l7-.8z"/></svg>
+        </div>
+        <p><strong>5.0 / 5.0</strong> &mdash; &ldquo;Confirmed by this business.&rdquo; <br class="br-sm">Verified Google Business listing.</p>
+      </div>
+    </div>
+
+    <div class="hero__visual reveal">
+      <div class="hero__ring"></div>
+      <div class="hero__card">
+        <div class="hero__card-top">
+          <span class="chip">Open Today</span>
+          <span class="chip chip--muted">10:00 &ndash; 21:00</span>
+        </div>
+        <div class="tooth-art">
+          <svg viewBox="0 0 200 220" aria-hidden="true">
+            <defs>
+              <linearGradient id="tg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="45%" stop-color="#e8f2ec"/>
+                <stop offset="100%" stop-color="#8fb9a2"/>
+              </linearGradient>
+              <linearGradient id="tg2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity=".35"/>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M100 18c-19 0-26 10-41 10S32 21 25 37c-10 26 3 64 12 90 6 19 13 45 25 45s13-38 25-38h26c12 0 13 38 25 38s19-26 25-45c9-26 22-58 12-84-7-16-19-10-34-10s-22-15-41-15z"
+                  fill="url(#tg)" stroke="#ffffff" stroke-width="1.5"/>
+            <path d="M100 18c-19 0-26 10-41 10S32 21 25 37c-6 16-3 36 2 54 10-30 30-48 73-48 20 0 34 5 45 13-2-8-5-15-8-21-7-16-19-10-34-10s-22-15-41-15z"
+                  fill="url(#tg2)"/>
+          </svg>
+          <span class="sparkle sparkle--1">&#10022;</span>
+          <span class="sparkle sparkle--2">&#10022;</span>
+          <span class="sparkle sparkle--3">&#10022;</span>
+        </div>
+        <div class="hero__card-foot">
+          <div><b>15+</b><span>Treatments</span></div>
+          <div><b>5.0</b><span>Google Rating</span></div>
+          <div><b>Same&nbsp;Day</b><span>Appointments</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__marquee">
+    <div class="marquee__track">
+      <span>Scaling &amp; Polishing</span><i>&#10022;</i>
+      <span>Root Canal Treatment</span><i>&#10022;</i>
+      <span>Dental Implants</span><i>&#10022;</i>
+      <span>Braces &amp; Aligners</span><i>&#10022;</i>
+      <span>Teeth Whitening</span><i>&#10022;</i>
+      <span>Crowns &amp; Bridges</span><i>&#10022;</i>
+      <span>Kids Dentistry</span><i>&#10022;</i>
+      <span>Emergency Care</span><i>&#10022;</i>
+      <span>Scaling &amp; Polishing</span><i>&#10022;</i>
+      <span>Root Canal Treatment</span><i>&#10022;</i>
+      <span>Dental Implants</span><i>&#10022;</i>
+      <span>Braces &amp; Aligners</span><i>&#10022;</i>
+      <span>Teeth Whitening</span><i>&#10022;</i>
+      <span>Crowns &amp; Bridges</span><i>&#10022;</i>
+      <span>Kids Dentistry</span><i>&#10022;</i>
+      <span>Emergency Care</span><i>&#10022;</i>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="container stats__in">
+    <div class="stat reveal"><b class="count" data-target="5" data-decimals="1">0</b><span>Google Rating</span></div>
+    <div class="stat reveal"><b class="count" data-target="15" data-suffix="+">0</b><span>Dental Services</span></div>
+    <div class="stat reveal"><b class="count" data-target="11" data-suffix=" hrs">0</b><span>Open Daily</span></div>
+    <div class="stat reveal"><b class="count" data-target="100" data-suffix="%">0</b><span>Sterilised Tools</span></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="container about__in">
+    <div class="about__media reveal">
+      <div class="about__frame">
+        <div class="about__img about__img--1">
+          <svg viewBox="0 0 24 24" class="ph"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/></svg>
+          <span>Modern Operatory</span>
+        </div>
+        <div class="about__img about__img--2">
+          <svg viewBox="0 0 24 24" class="ph"><path d="M4 5h16v3H4zm0 5h16v3H4zm0 5h10v3H4z"/></svg>
+          <span>Sterilisation Bay</span>
+        </div>
+        <div class="about__badge">
+          <b>5.0</b>
+          <span>Google<br>Rated</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__copy">
+      <span class="eyebrow reveal"><i class="dot"></i> About the Clinic</span>
+      <h2 class="h2 reveal">Honest Dentistry, <span class="accent-text">Higher Standards.</span></h2>
+      <p class="reveal">
+        <strong>Sasti Dentistry</strong> was founded on a simple belief &mdash; that quality dental care
+        should never be a luxury. Our clinic on Range Road, opposite Sonari Bank in Shalley Valley,
+        brings clinical precision and genuine warmth to every patient who walks through the door.
+      </p>
+      <p class="reveal">
+        Every instrument is autoclave-sterilised, every treatment plan is explained before it begins,
+        and every price is quoted upfront. No surprises &mdash; just careful, unhurried dentistry.
+      </p>
+
+      <ul class="ticks reveal">
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Transparent, upfront pricing on every procedure</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Fully sterilised, single-use disposables</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Gentle, pain-managed treatment approach</li>
+        <li><svg class="ic" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Walk-ins and same-day emergencies welcome</li>
+      </ul>
+
+      <a href="#services" class="btn btn--primary reveal">Explore Our Treatments
+        <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h12l-4.5-4.5L14 6l7 6-7 6-1.5-1.5L17 12H5z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section section--alt" id="services">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow reveal"><i class="dot"></i> What We Do</span>
+      <h2 class="h2 reveal">Complete <span class="accent-text">Dental Care</span> Under One Roof</h2>
+      <p class="sec-head__sub reveal">From a routine polish to a full smile makeover &mdash; every treatment delivered with the same attention to detail.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <span class="card__num">01</span>
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3c-3 0-4 1.5-6.5 1.5S3 3.5 2.2 6c-1.5 4 .5 10 2 14 1 3 2 7 4 7s2-6 4-6h1.6c2 0 2 6 4 6s3-4 4-7c1.5-4 3.5-10 2-13-.8-2.5-3-1.5-5.5-1.5S15 3 12 3z"/></svg>
+        </span>
+        <h3>Scaling &amp; Polishing</h3>
+        <p>Ultrasonic removal of plaque, tartar and stains &mdash; the single best thing you can do for your gums.</p>
+        <span class="card__price">From Rs 2,000</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num">02</span>
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6zm0 5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm0 11c-1.9 0-3.6-1-4.6-2.4.1-1.5 3.1-2.3 4.6-2.3s4.5.8 4.6 2.3A5.5 5.5 0 0 1 12 18z"/></svg>
+        </span>
+        <h3>Root Canal Treatment</h3>
+        <p>Save the tooth, lose the pain. Single and multi-visit RCT performed under complete local anaesthesia.</p>
+        <span class="card__price">From Rs 8,000</span>
+      </article>
+
+      <article class="card reveal card--feature">
+        <span class="card__num">03</span>
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2 9.5 8.5 3 11l6.5 2.5L12 20l2.5-6.5L21 11l-6.5-2.5z"/></svg>
+        </span>
+        <h3>Teeth Whitening</h3>
+        <p>Professional in-chair bleaching that lifts years of tea, coffee and paan staining in a single sitting.</p>
+        <span class="card__price">From Rs 12,000</span>
+        <span class="card__tag">Most Popular</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num">04</span>
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4v1H6v3h12V7h-2V6a4 4 0 0 0-4-4zm-2 4a2 2 0 1 1 4 0v1h-4zM7 12h10l-1.2 9.2a1 1 0 0 1-1 .8H9.2a1 1 0 0 1-1-.8z"/></svg>
+        </span>
+        <h3>Dental Implants</h3>
+        <p>Titanium-post replacement for missing teeth &mdash; the closest thing modern dentistry has to a natural tooth.</p>
+        <span class="card__price">On Consultation</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num">05</span>
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24"><path d="M3 8h18v2H3zm0 6h18v2H3zM6 5h2v14H6zm10 0h2v14h-2z"/></svg>
+        </span>
+        <h3>Braces &amp; Aligners</h3>
+        <p>Metal, ceramic and clear-aligner orthodontics to straighten crowding, gaps and bite problems.</p>
+        <span class="card__price">Plans Available</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num">06</span>
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-9.1C.9 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2 .7-.9 2-2 4-2 3.4 0 5.1 3.6 3.3 6.9C19 16.4 12 21 12 21z"/></svg>
+        </span>
+        <h3>Kids Dentistry</h3>
+        <p>Fluoride, fissure sealants and fillings in a calm, patient setting built to keep children unafraid.</p>
+        <span class="card__price">From Rs 1,500</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num">07</span>
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v4H4zm2 6h12l-1 10H7zm3 2v6h2v-6zm4 0v6h2v-6z"/></svg>
+        </span>
+        <h3>Crowns &amp; Bridges</h3>
+        <p>Zirconia and PFM crowns colour-matched to your natural shade, fitted for a lifetime of chewing.</p>
+        <span class="card__price">From Rs 9,000</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__num">08</span>
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>
+        </span>
+        <h3>Emergency Care</h3>
+        <p>Sudden pain, swelling or a knocked-out tooth? Call us &mdash; we keep slots open every single day.</p>
+        <span class="card__price">Same-Day Slot</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow reveal"><i class="dot"></i> Why Sasti Dentistry</span>
+      <h2 class="h2 reveal">The Difference Is In <span class="accent-text">The Details</span></h2>
+    </div>
+
+    <div class="why__grid">
+      <div class="why__item reveal">
+        <span class="why__ic"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.6 3.8 10.8 9 12 5.2-1.2 9-6.4 9-12V5zm-1 15-4-4 1.4-1.4L11 13.2l4.6-4.6L17 10z"/></svg></span>
+        <h3>Sterilisation, Non-Negotiable</h3>
+        <p>Class-B autoclave cycles, sealed instrument pouches and fresh disposables opened in front of you.</p>
+      </div>
+      <div class="why__item reveal">
+        <span class="why__ic"><svg viewBox="0 0 24 24"><path d="M11.8 21 4 13.2l2.1-2.1 5.7 5.7L19.9 3 22 5.1z"/></svg></span>
+        <h3>Priced Fairly, Always</h3>
+        <p>The name says it &mdash; <em>sasti</em>. Honest rates written down before treatment starts, never after.</p>
+      </div>
+      <div class="why__item reveal">
+        <span class="why__ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.6 4 2.3-.9 1.6-5.1-3V6h2z"/></svg></span>
+        <h3>Open 11 Hours a Day</h3>
+        <p>Working late? We close at 9 PM so you never have to take a day off for a dental visit.</p>
+      </div>
+      <div class="why__item reveal">
+        <span class="why__ic"><svg viewBox="0 0 24 24"><path d="M12 2 9.5 8.5 3 11l6.5 2.5L12 20l2.5-6.5L21 11l-6.5-2.5z"/></svg></span>
+        <h3>Modern Equipment</h3>
+        <p>Digital diagnostics, ultrasonic scalers and rotary endodontics &mdash; faster visits, better outcomes.</p>
+      </div>
+      <div class="why__item reveal">
+        <span class="why__ic"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 5.5V22h18v-2.5c0-3-4-5.5-9-5.5z"/></svg></span>
+        <h3>One Dentist, Start to Finish</h3>
+        <p>You're not passed between chairs. The dentist who diagnoses you is the one who treats you.</p>
+      </div>
+      <div class="why__item reveal">
+        <span class="why__ic"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+        <h3>Easy to Reach</h3>
+        <p>Right on Range Road opposite Sonari Bank &mdash; central, well-connected and simple to park near.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section section--alt" id="process">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow reveal"><i class="dot"></i> How It Works</span>
+      <h2 class="h2 reveal">Your Visit, <span class="accent-text">Step by Step</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="step__n">1</span>
+        <h3>Call or Book Online</h3>
+        <p>Ring 0332 3331991 or send the form below. We'll confirm a time that suits you the same day.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step__n">2</span>
+        <h3>Examination</h3>
+        <p>A full check of teeth, gums and bite &mdash; plus digital imaging where it's genuinely needed.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step__n">3</span>
+        <h3>Plan &amp; Price</h3>
+        <p>You see the findings, the options and the exact cost. Nothing proceeds until you say yes.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step__n">4</span>
+        <h3>Treatment &amp; Aftercare</h3>
+        <p>Comfortable treatment, clear home-care instructions and a follow-up call to check on you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow reveal"><i class="dot"></i> Photos</span>
+      <h2 class="h2 reveal">Inside <span class="accent-text">Our Clinic</span></h2>
+      <p class="sec-head__sub reveal">A calm, clean space designed to take the edge off a dental appointment.</p>
+    </div>
+
+    <div class="gallery">
+      <figure class="g-item g-item--tall reveal"><span class="g-ph">Reception</span><figcaption>Reception &amp; Waiting Lounge</figcaption></figure>
+      <figure class="g-item reveal"><span class="g-ph">Chair 01</span><figcaption>Main Treatment Room</figcaption></figure>
+      <figure class="g-item reveal"><span class="g-ph">Sterile</span><figcaption>Sterilisation Bay</figcaption></figure>
+      <figure class="g-item g-item--wide reveal"><span class="g-ph">Smile</span><figcaption>Whitening Before &amp; After</figcaption></figure>
+      <figure class="g-item reveal"><span class="g-ph">X-Ray</span><figcaption>Digital Imaging Corner</figcaption></figure>
+    </div>
+    <p class="gallery__note">Placeholder tiles &mdash; drop your clinic photos into <code>/img</code> and swap them in.</p>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="section section--alt" id="reviews">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow reveal"><i class="dot"></i> Google Reviews</span>
+      <h2 class="h2 reveal">What Our <span class="accent-text">Patients Say</span></h2>
+    </div>
+
+    <div class="rev__wrap">
+      <aside class="rev__score reveal">
+        <div class="score__big">5.0</div>
+        <div class="score__stars">
+          <svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.2l1.5-7L2 9.4l7-.8z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.2l1.5-7L2 9.4l7-.8z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.2l1.5-7L2 9.4l7-.8z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.2l1.5-7L2 9.4l7-.8z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.2l1.5-7L2 9.4l7-.8z"/></svg>
+        </div>
+        <p class="score__count">Based on <b>3 Google reviews</b></p>
+        <ul class="score__bars">
+          <li><span>5</span><i><b style="width:100%"></b></i><em>3</em></li>
+          <li><span>4</span><i><b style="width:0%"></b></i><em>0</em></li>
+          <li><span>3</span><i><b style="width:0%"></b></i><em>0</em></li>
+          <li><span>2</span><i><b style="width:0%"></b></i><em>0</em></li>
+          <li><span>1</span><i><b style="width:0%"></b></i><em>0</em></li>
+        </ul>
+        <span class="score__verified">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.6 3.8 10.8 9 12 5.2-1.2 9-6.4 9-12V5zm-1 15-4-4 1.4-1.4L11 13.2l4.6-4.6L17 10z"/></svg>
+          Confirmed by this business
+        </span>
+      </aside>
+
+      <div class="rev__slider reveal">
+        <div class="rev__track" id="revTrack">
+          <blockquote class="rev">
+            <div class="rev__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>&ldquo;Genuinely the most reasonable dental clinic I've been to in Rawalpindi. The scaling was thorough and completely painless, and the doctor explained everything before touching anything. Highly recommended.&rdquo;</p>
+            <footer><span class="rev__av">A</span><div><b>Ahmed R.</b><small>Google Review</small></div></footer>
+          </blockquote>
+          <blockquote class="rev">
+            <div class="rev__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>&ldquo;Took my son here after he chipped a tooth. They saw us the same evening and the staff were incredibly patient with him. Clean clinic, fair price, no fuss at all.&rdquo;</p>
+            <footer><span class="rev__av">S</span><div><b>Sana K.</b><small>Google Review</small></div></footer>
+          </blockquote>
+          <blockquote class="rev">
+            <div class="rev__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>&ldquo;Had a root canal done here and honestly I felt nothing. The price quoted was the price I paid &mdash; no extra charges added later. Easy to find, right opposite Sonari Bank.&rdquo;</p>
+            <footer><span class="rev__av">M</span><div><b>M. Bilal</b><small>Google Review</small></div></footer>
+          </blockquote>
+        </div>
+        <div class="rev__nav">
+          <button class="rev__btn" id="revPrev" aria-label="Previous review"><svg viewBox="0 0 24 24"><path d="M19 12H7l4.5 4.5L10 18l-7-6 7-6 1.5 1.5L7 12h12z"/></svg></button>
+          <div class="rev__dots" id="revDots"></div>
+          <button class="rev__btn" id="revNext" aria-label="Next review"><svg viewBox="0 0 24 24"><path d="M5 12h12l-4.5-4.5L14 6l7 6-7 6-1.5-1.5L17 12H5z"/></svg></button>
+        </div>
+        <p class="rev__disclaimer">Review text shown here is illustrative sample copy. Replace with the real Google review text before publishing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING / CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow reveal"><i class="dot"></i> Get In Touch</span>
+      <h2 class="h2 reveal">Book Your <span class="accent-text">Appointment</span></h2>
+      <p class="sec-head__sub reveal">Send us a request and we'll confirm by phone &mdash; usually within the hour during clinic times.</p>
+    </div>
+
+    <div class="contact__grid" id="book">
+      <div class="contact__info reveal">
+        <div class="info__row">
+          <span class="info__ic"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+          <div>
+            <h4>Clinic Address</h4>
+            <p>Range Rd, opp. Sonari Bank,<br>Shalley Valley, Rawalpindi, 46000</p>
+            <a class="info__link" href="https://maps.google.com/?q=Range+Road+Shalley+Valley+Rawalpindi+46000" target="_blank" rel="noopener">Get Directions &rarr;</a>
+          </div>
+        </div>
+
+        <div class="info__row">
+          <span class="info__ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .5 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.5-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1z"/></svg></span>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:+923323331991">0332 3331991</a></p>
+            <a class="info__link" href="tel:+923323331991">Call the clinic &rarr;</a>
+          </div>
+        </div>
+
+        <div class="info__row">
+          <span class="info__ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.6 4 2.3-.9 1.6-5.1-3V6h2z"/></svg></span>
+          <div>
+            <h4>Opening Hours</h4>
+            <ul class="hours">
+              <li><span>Monday &ndash; Thursday</span><b>10:00 &ndash; 21:00</b></li>
+              <li><span>Friday</span><b>10:00 &ndash; 12:30 &middot; 14:30 &ndash; 21:00</b></li>
+              <li><span>Saturday</span><b>10:00 &ndash; 21:00</b></li>
+              <li class="is-off"><span>Sunday</span><b>Closed</b></li>
+            </ul>
+            <span class="badge-live"><i></i> Open Now &middot; Closes 9 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact__form reveal" id="bookForm" novalidate>
+        <div class="f-row">
+          <div class="field">
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" name="name" placeholder="e.g. Ahmed Raza" required>
+            <small class="err"></small>
+          </div>
+          <div class="field">
+            <label for="fphone">Phone Number</label>
+            <input type="tel" id="fphone" name="phone" placeholder="03XX XXXXXXX" required>
+            <small class="err"></small>
+          </div>
+        </div>
+
+        <div class="f-row">
+          <div class="field">
+            <label for="fservice">Treatment</label>
+            <select id="fservice" name="service">
+              <option>General Check-Up</option>
+              <option>Scaling &amp; Polishing</option>
+              <option>Root Canal Treatment</option>
+              <option>Teeth Whitening</option>
+              <option>Dental Implants</option>
+              <option>Braces &amp; Aligners</option>
+              <option>Crowns &amp; Bridges</option>
+              <option>Kids Dentistry</option>
+              <option>Emergency / Pain</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fdate">Preferred Date</label>
+            <input type="date" id="fdate" name="date">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fmsg">Message <span class="opt">(optional)</span></label>
+          <textarea id="fmsg" name="message" rows="4" placeholder="Tell us briefly what's bothering you&hellip;"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--lg btn--block">
+          Request Appointment
+          <svg class="ic" viewBox="0 0 24 24"><path d="M5 12h12l-4.5-4.5L14 6l7 6-7 6-1.5-1.5L17 12H5z"/></svg>
+        </button>
+        <p class="form__note">Prefer to talk? Call <a href="tel:+923323331991">0332 3331991</a> &mdash; we answer during clinic hours.</p>
+        <div class="form__ok" id="formOk">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+          <span>Thank you &mdash; your request has been noted. We'll call you to confirm.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="container cta__in">
+    <div class="reveal">
+      <h2 class="h2">Ready When <span class="accent-text">You Are.</span></h2>
+      <p>Walk in, or call ahead &mdash; either way you'll be seen by someone who takes their time.</p>
+      <div class="cta__actions">
+        <a href="tel:+923323331991" class="btn btn--primary btn--lg">Call 0332 3331991</a>
+        <a href="https://maps.google.com/?q=Range+Road+Shalley+Valley+Rawalpindi+46000" target="_blank" rel="noopener" class="btn btn--ghost btn--lg">Open in Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__in">
+    <div class="footer__col footer__col--brand">
+      <a href="#home" class="brand brand--foot">
+        <span class="brand__icon">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 8c-6 0-8 3-13 3S10 9 8 14c-3 8 1 20 4 28 2 6 4 14 8 14s4-12 8-12h4c4 0 4 12 8 12s6-8 8-14c3-8 7-20 4-26-2-5-6-3-11-3s-7-5-13-5z"
+                  fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand__text"><strong>Sasti <em>Dentistry</em></strong><small>Dental Clinic &middot; Rawalpindi</small></span>
+      </a>
+      <p class="footer__blurb">Affordable, honest dental care on Range Road, Shalley Valley. Rated 5.0 on Google and confirmed by the business.</p>
+      <div class="footer__stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span>5.0 &middot; 3 Reviews</span></div>
+    </div>
+
+    <div class="footer__col">
+      <h4>Explore</h4>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Choose Us</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Treatments</h4>
+      <a href="#services">Scaling &amp; Polishing</a>
+      <a href="#services">Root Canal</a>
+      <a href="#services">Teeth Whitening</a>
+      <a href="#services">Implants</a>
+      <a href="#services">Braces</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Visit Us</h4>
+      <p class="footer__addr">Range Rd, opp. Sonari Bank,<br>Shalley Valley, Rawalpindi, 46000</p>
+      <a href="tel:+923323331991" class="footer__phone">0332 3331991</a>
+      <p class="footer__hrs">Open Daily &middot; 10 AM &ndash; 9 PM<br><span>Sunday Closed</span></p>
+    </div>
+  </div>
+
+  <div class="footer__bar">
+    <div class="container footer__bar-in">
+      <p>&copy; <span id="year">2026</span> Sasti Dentistry. All rights reserved.</p>
+      <p class="footer__made">Range Road, Rawalpindi &middot; <a href="tel:+923323331991">0332 3331991</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING ACTIONS ============ -->
+<a href="tel:+923323331991" class="fab fab--call" aria-label="Call the clinic">
+  <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .5 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.5-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1z"/></svg>
+  <span>Call Now</span>
+</a>
+<button class="fab fab--top" id="toTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M12 5l7 7-1.5 1.5L13 9v10h-2V9l-4.5 4.5L5 12z"/></svg>
+</button>
+
+<script>
+/* =========================================================
+   SASTI DENTISTRY — interactions
+   ========================================================= */
+(function () {
+  'use strict';
+
+  var $  = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  /* ---------- PRELOADER ---------- */
+  window.addEventListener('load', function () {
+    var pre = $('#preloader');
+    if (!pre) return;
+    setTimeout(function () { pre.classList.add('is-done'); }, 450);
+  });
+
+  /* ---------- YEAR ---------- */
+  var yr = $('#year');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ---------- STICKY HEADER ---------- */
+  var header = $('#header');
+  var toTop  = $('#toTop');
+  function onScroll() {
+    var y = window.scrollY;
+    if (header) header.classList.toggle('is-stuck', y > 20);
+    if (toTop)  toTop.classList.toggle('is-on', y > 600);
+    spy();
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  if (toTop) {
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ---------- MOBILE NAV ---------- */
+  var burger = $('#burger');
+  var nav    = $('#nav');
+  function closeNav() {
+    if (!nav) return;
+    nav.classList.remove('is-open');
+    burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  if (burger && nav) {
+    burger.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      burger.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    $$('.nav__link, .nav__cta', nav).forEach(function (a) {
+      a.addEventListener('click', closeNav);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeNav();
+    });
+    document.addEventListener('click', function (e) {
+      if (!nav.classList.contains('is-open')) return;
+      if (nav.contains(e.target) || burger.contains(e.target)) return;
+      closeNav();
+    });
+  }
+
+  /* ---------- SCROLL SPY ---------- */
+  var sections = $$('section[id]');
+  var links    = $$('.nav__link');
+  function spy() {
+    var pos = window.scrollY + 140;
+    var current = '';
+    sections.forEach(function (sec) {
+      if (pos >= sec.offsetTop) current = sec.id;
+    });
+    links.forEach(function (l) {
+      l.classList.toggle('is-active', l.getAttribute('href') === '#' + current);
+    });
+  }
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  var reveals = $$('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        var siblings = Array.prototype.slice.call(el.parentElement.children).filter(function (n) {
+          return n.classList.contains('reveal');
+        });
+        var i = siblings.indexOf(el);
+        el.style.transitionDelay = Math.min(i, 6) * 80 + 'ms';
+        el.classList.add('is-in');
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* ---------- COUNTERS ---------- */
+  var counters = $$('.count');
+  function runCount(el) {
+    var target   = parseFloat(el.dataset.target) || 0;
+    var decimals = parseInt(el.dataset.decimals || '0', 10);
+    var suffix   = el.dataset.suffix || '';
+    var start    = null;
+    var dur      = 1500;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * eased).toFixed(decimals) + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+      else el.textContent = target.toFixed(decimals) + suffix;
+    }
+    requestAnimationFrame(frame);
+  }
+  if ('IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        runCount(en.target);
+        cio.unobserve(en.target);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (c) { cio.observe(c); });
+  } else {
+    counters.forEach(runCount);
+  }
+
+  /* ---------- CARD SPOTLIGHT ---------- */
+  $$('.card').forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+      card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
+  });
+
+  /* ---------- REVIEW SLIDER ---------- */
+  (function () {
+    var track = $('#revTrack');
+    if (!track) return;
+    var slides = $$('.rev', track);
+    var dotsBox = $('#revDots');
+    var idx = 0;
+    var timer;
+
+    slides.forEach(function (_, i) {
+      var b = document.createElement('button');
+      b.setAttribute('aria-label', 'Review ' + (i + 1));
+      b.addEventListener('click', function () { go(i); reset(); });
+      dotsBox.appendChild(b);
+    });
+    var dots = $$('button', dotsBox);
+
+    function go(n) {
+      idx = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+      dots.forEach(function (d, i) { d.classList.toggle('is-on', i === idx); });
+    }
+    function next() { go(idx + 1); }
+    function prev() { go(idx - 1); }
+    function reset() { clearInterval(timer); timer = setInterval(next, 6500); }
+
+    $('#revNext').addEventListener('click', function () { next(); reset(); });
+    $('#revPrev').addEventListener('click', function () { prev(); reset(); });
+
+    // swipe
+    var x0 = null;
+    track.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 45) { dx < 0 ? next() : prev(); reset(); }
+      x0 = null;
+    });
+
+    go(0);
+    reset();
+  })();
+
+  /* ---------- OPEN / CLOSED BADGE ---------- */
+  (function () {
+    var badges = $$('.badge-live');
+    if (!badges.length) return;
+    var now  = new Date();
+    var day  = now.getDay();               // 0 = Sunday
+    var mins = now.getHours() * 60 + now.getMinutes();
+    var open = day !== 0 && mins >= 600 && mins < 1260;   // 10:00 – 21:00
+
+    badges.forEach(function (b) {
+      b.lastChild.textContent = open ? ' Open Now · Closes 9 PM' : ' Closed · Opens 10 AM';
+      if (!open) {
+        b.style.borderColor = 'rgba(224,112,112,.32)';
+        b.style.background  = 'rgba(224,112,112,.08)';
+        b.style.color       = '#e79a9a';
+        var d = b.querySelector('i');
+        if (d) { d.style.background = '#e07070'; d.style.boxShadow = '0 0 8px #e07070'; }
+      }
+    });
+  })();
+
+  /* ---------- BOOKING FORM ---------- */
+  (function () {
+    var form = $('#bookForm');
+    if (!form) return;
+    var ok = $('#formOk');
+
+    function setErr(input, msg) {
+      var field = input.closest('.field');
+      var err = field.querySelector('.err');
+      field.classList.toggle('has-err', !!msg);
+      if (err) err.textContent = msg || '';
+      return !msg;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name  = $('#fname');
+      var phone = $('#fphone');
+      var valid = true;
+
+      valid = setErr(name, name.value.trim().length < 2 ? 'Please enter your name.' : '') && valid;
+
+      var digits = phone.value.replace(/\D/g, '');
+      valid = setErr(phone, digits.length < 10 ? 'Enter a valid phone number.' : '') && valid;
+
+      if (!valid) return;
+
+      ok.classList.add('is-on');
+      form.reset();
+      ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(function () { ok.classList.remove('is-on'); }, 7000);
+    });
+
+    ['#fname', '#fphone'].forEach(function (sel) {
+      var el = $(sel);
+      el.addEventListener('input', function () { setErr(el, ''); });
+    });
+
+    // no past dates
+    var date = $('#fdate');
+    if (date) date.min = new Date().toISOString().split('T')[0];
+  })();
+
+  /* ---------- SMOOTH ANCHORS (offset for sticky header) ---------- */
+  $$('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      var t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      var top = t.getBoundingClientRect().top + window.scrollY - 74;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+
+  onScroll();
+})();
+
+</script>
+</body>
+</html>
