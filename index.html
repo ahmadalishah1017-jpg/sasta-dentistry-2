@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisa Khani Kabab — Authentic Peshawari Kababs & Karahi | Rawalpindi</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display for regal heritage titles, Plus Jakarta Sans for UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        heritage: ['"Cinzel"', 'serif'],
+                    },
+                    colors: {
+                        copper: {
+                            50: '#fffbf5',
+                            100: '#fef3e2',
+                            500: '#d97706',
+                            600: '#b45309',
+                            700: '#92400e',
+                            800: '#78350f',
+                            900: '#451a03',
+                        },
+                        amberGold: '#f59e0b',
+                        spicyRed: '#dc2626',
+                        charcoal: '#121212',
+                        darkCard: '#1a1918',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 25px rgba(217, 119, 6, 0.25)',
+                        'redGlow': '0 0 25px rgba(220, 38, 38, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f0e0d;
+            color: #e5e5e5;
+        }
+
+        /* Glassmorphism elements */
+        .glass-panel {
+            background: rgba(26, 25, 24, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(217, 119, 6, 0.15);
+        }
+
+        .glass-header {
+            background: rgba(15, 14, 13, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Pattern background */
+        .bg-oriental {
+            background-color: #0f0e0d;
+            background-image: radial-gradient(#26221d 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Gradient text highlight */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef3e2 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0e0d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b45309;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #dc2626;
+        }
+
+        /* Tab view transition */
+        .page-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .page-view.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Card Hover Effects */
+        .food-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .food-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(217, 119, 6, 0.3);
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+
+        /* Toast notification animation */
+        #toast {
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform: translateY(100px);
+            opacity: 0;
+        }
+        #toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-oriental selection:bg-amberGold selection:text-black min-h-screen flex flex-col justify-between">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-copper-900 via-copper-800 to-copper-900 text-amber-100 text-xs sm:text-sm py-2 px-4 border-b border-copper-700/50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-400 font-semibold border border-emerald-800 text-xs">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open Now (Closes 11 PM)
+                </span>
+                <span class="hidden md:inline text-amber-200/80">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 inline mr-1 text-amberGold"></i> 400 Street No 2, Chour Harpal, Rawalpindi
+                </span>
+            </div>
+            <div class="flex items-center gap-4 font-medium text-xs sm:text-sm">
+                <a href="tel:0516161229" class="hover:text-amberGold transition-colors flex items-center gap-1">
+                    <i data-lucide="phone" class="w-3.5 h-3.5 text-amberGold"></i> (051) 6161229
+                </a>
+                <span class="text-amber-700">|</span>
+                <span class="text-amber-300 font-semibold flex items-center gap-1">
+                    <i data-lucide="banknote" class="w-3.5 h-3.5 text-amberGold"></i> Cash Only
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header / Navbar -->
+    <header class="sticky top-0 z-50 glass-header transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" onclick="switchPage('home'); return false;" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-spicyRed to-copper-700 flex items-center justify-center shadow-redGlow group-hover:scale-105 transition-transform">
+                        <i data-lucide="flame" class="w-6 h-6 text-amberGold fill-amberGold"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heritage text-xl sm:text-2xl font-bold tracking-wider text-white group-hover:text-amberGold transition-colors">
+                            KISA KHANI <span class="text-amberGold">KABAB</span>
+                        </span>
+                        <span class="text-[10px] tracking-widest text-copper-300 uppercase font-semibold -mt-1">
+                            Where Flavor Meets Tradition
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-1 border border-copper-900/60 p-1.5 rounded-full bg-charcoal/80">
+                    <button onclick="switchPage('home')" id="nav-home" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-white bg-copper-700 hover:text-amberGold transition-all">
+                        Home
+                    </button>
+                    <button onclick="switchPage('menu')" id="nav-menu" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-gray-300 hover:text-amberGold transition-all">
+                        Menu & Order
+                    </button>
+                    <button onclick="switchPage('breakfast')" id="nav-breakfast" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-gray-300 hover:text-amberGold transition-all flex items-center gap-1">
+                        <i data-lucide="sun" class="w-3.5 h-3.5 text-amberGold"></i> Sahar Breakfast
+                    </button>
+                    <button onclick="switchPage('heritage')" id="nav-heritage" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-gray-300 hover:text-amberGold transition-all">
+                        Our Story
+                    </button>
+                    <button onclick="switchPage('reviews')" id="nav-reviews" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-gray-300 hover:text-amberGold transition-all">
+                        Reviews
+                    </button>
+                    <button onclick="switchPage('contact')" id="nav-contact" class="nav-btn px-4 py-2 rounded-full text-sm font-semibold text-gray-300 hover:text-amberGold transition-all">
+                        Contact
+                    </button>
+                </nav>
+
+                <!-- Action Buttons & Cart -->
+                <div class="flex items-center gap-3">
+                    <!-- Reservation Button -->
+                    <button onclick="openReservationModal()" class="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-xl bg-copper-900/50 border border-copper-700/60 hover:bg-copper-800 text-amber-100 text-xs font-bold transition-all">
+                        <i data-lucide="utensils" class="w-4 h-4 text-amberGold"></i>
+                        Book Table
+                    </button>
+
+                    <!-- Cart Trigger Button -->
+                    <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-xl bg-charcoal border border-copper-800 hover:border-amberGold transition-all text-white group">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 group-hover:text-amberGold transition-colors"></i>
+                        <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-spicyRed text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-md scale-0 transition-transform">
+                            0
+                        </span>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-charcoal border border-copper-800 text-gray-200 hover:text-amberGold">
+                        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Panel -->
+        <div id="mobile-nav" class="hidden lg:hidden border-t border-copper-900/60 bg-charcoal px-4 pt-3 pb-6 space-y-2">
+            <button onclick="switchPage('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-copper-900/40 text-gray-200">
+                Home
+            </button>
+            <button onclick="switchPage('menu'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-copper-900/40 text-gray-200">
+                Full Menu & Online Order
+            </button>
+            <button onclick="switchPage('breakfast'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-copper-900/40 text-amberGold font-semibold">
+                Sahar Breakfast Special
+            </button>
+            <button onclick="switchPage('heritage'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-copper-900/40 text-gray-200">
+                Our Story & Heritage
+            </button>
+            <button onclick="switchPage('reviews'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-copper-900/40 text-gray-200">
+                Customer Reviews (4.2★)
+            </button>
+            <button onclick="switchPage('contact'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-copper-900/40 text-gray-200">
+                Find Us / Contact
+            </button>
+            <div class="pt-2 flex flex-col gap-2">
+                <button onclick="openReservationModal(); toggleMobileMenu();" class="w-full py-2.5 rounded-xl bg-copper-700 text-white font-bold text-sm flex items-center justify-center gap-2">
+                    <i data-lucide="calendar" class="w-4 h-4"></i> Reserve a Table
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- ================= PAGE 1: HOME PAGE ================= -->
+        <div id="page-home" class="page-view active">
+            <!-- Hero Section -->
+            <section class="relative min-h-[85vh] flex items-center justify-center pt-8 pb-16 overflow-hidden">
+                <!-- Decorative background elements -->
+                <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-copper-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+                <div class="absolute bottom-10 right-10 w-96 h-96 bg-spicyRed/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                    <div class="grid lg:grid-cols-12 gap-12 items-center">
+                        
+                        <!-- Left Hero Content -->
+                        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                            
+                            <!-- Ratings Pill -->
+                            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-charcoal border border-copper-700/60 shadow-lg text-xs sm:text-sm font-semibold">
+                                <div class="flex text-amberGold">
+                                    <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                                    <i data-lucide="star-half" class="w-4 h-4 fill-amberGold"></i>
+                                </div>
+                                <span class="text-white">4.2 / 5.0 Google Rating</span>
+                                <span class="text-copper-400">•</span>
+                                <span class="text-amber-300">150+ Reviews</span>
+                            </div>
+
+                            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight text-white">
+                                Authentic <span class="gold-gradient-text">Chapli Kababs</span> & Peshawari Grill
+                            </h1>
+
+                            <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                                Experience the age-old art of Kabab making in Rawalpindi. From sizzling Chapli Kababs and juicy Seekh Kababs to tender Boti Kababs and Shinwari Karahi—expertly grilled to perfection over slow embers.
+                            </p>
+
+                            <!-- CTA Buttons -->
+                            <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-2">
+                                <button onclick="switchPage('menu')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-spicyRed to-copper-600 hover:from-red-700 hover:to-copper-700 text-white font-bold text-base shadow-redGlow hover:scale-105 transition-all flex items-center justify-center gap-3">
+                                    <i data-lucide="utensils" class="w-5 h-5"></i> View Full Menu & Order
+                                </button>
+                                <a href="https://wa.me/message/KC3DRS3TH23FO1" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-charcoal border border-emerald-600/60 hover:bg-emerald-950/40 text-emerald-400 font-bold text-base hover:scale-105 transition-all flex items-center justify-center gap-2">
+                                    <i data-lucide="message-circle" class="w-5 h-5 text-emerald-400"></i> WhatsApp Order
+                                </a>
+                            </div>
+
+                            <!-- Highlights icons -->
+                            <div class="pt-8 border-t border-copper-900/60 grid grid-cols-3 gap-4 text-center lg:text-left">
+                                <div>
+                                    <span class="block text-2xl font-black text-amberGold font-serif">100%</span>
+                                    <span class="text-xs text-gray-400">Halal Fresh Meat</span>
+                                </div>
+                                <div>
+                                    <span class="block text-2xl font-black text-amberGold font-serif">Charcoal</span>
+                                    <span class="text-xs text-gray-400">Authentic Fire Grill</span>
+                                </div>
+                                <div>
+                                    <span class="block text-2xl font-black text-amberGold font-serif">Sahar</span>
+                                    <span class="text-xs text-gray-400">Breakfast Daily</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Right Hero Visual Card -->
+                        <div class="lg:col-span-5">
+                            <div class="relative mx-auto max-w-md lg:max-w-none">
+                                
+                                <!-- Main Visual Frame -->
+                                <div class="relative rounded-3xl overflow-hidden border border-copper-700/50 bg-gradient-to-b from-darkCard to-charcoal p-3 shadow-2xl">
+                                    <div class="relative aspect-[4/5] rounded-2xl overflow-hidden bg-zinc-900 flex items-center justify-center">
+                                        
+                                        <!-- Styled Graphic Representation of Signature Chapli Kabab Sizzler -->
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 z-10"></div>
+                                        
+                                        <div class="relative z-0 w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-copper-950/80 via-zinc-900 to-spicyRed/20">
+                                            <div class="w-32 h-32 rounded-full bg-gradient-to-tr from-copper-700 to-amberGold p-1 mb-4 shadow-glow animate-pulse">
+                                                <div class="w-full h-full rounded-full bg-charcoal flex items-center justify-center border border-amberGold/30">
+                                                    <i data-lucide="flame" class="w-16 h-16 text-spicyRed"></i>
+                                                </div>
+                                            </div>
+                                            <span class="font-heritage text-copper-300 text-sm tracking-widest uppercase">Signature Specialty</span>
+                                            <h3 class="font-serif text-3xl font-extrabold text-white mt-1">Peshawari Chapli Kabab</h3>
+                                            <p class="text-xs text-gray-400 mt-2 max-w-xs">Hand-minced beef, fried crispy in real marrow fats with tomatoes, green chillies & roasted spices.</p>
+                                            
+                                            <div class="mt-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-copper-900/80 text-amberGold text-xs font-bold border border-copper-700">
+                                                Rs. 580 / Plate
+                                            </div>
+                                        </div>
+
+                                        <!-- Badge overlay -->
+                                        <div class="absolute top-4 left-4 z-20 bg-spicyRed text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                                            Most Loved
+                                        </div>
+
+                                        <div class="absolute bottom-4 right-4 z-20 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-copper-800 text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
+                                            <i data-lucide="clock" class="w-3.5 h-3.5"></i> Daily Fresh Prep
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Floating Quote Card -->
+                                <div class="absolute -bottom-6 -left-6 bg-charcoal/95 border border-copper-700 p-4 rounded-2xl shadow-2xl max-w-xs hidden sm:block z-30">
+                                    <div class="flex items-center gap-3">
+                                        <div class="p-2 rounded-full bg-amberGold/10 text-amberGold">
+                                            <i data-lucide="quote" class="w-5 h-5"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs italic text-gray-300">"Where flavor meets tradition in every bite."</p>
+                                            <span class="text-[10px] text-amberGold font-bold uppercase tracking-wider mt-1 block">Kisa Khani Heritage</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Popular Menu Section -->
+            <section class="py-16 bg-charcoal/60 border-y border-copper-900/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                        <div>
+                            <span class="text-amberGold text-xs font-extrabold uppercase tracking-widest font-heritage">Crafted With Heritage Recipes</span>
+                            <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white mt-1">Our Featured Delights</h2>
+                        </div>
+                        <button onclick="switchPage('menu')" class="mt-4 md:mt-0 inline-flex items-center gap-2 text-amberGold hover:text-white font-bold text-sm transition-colors">
+                            View Complete Menu <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Quick Featured Menu Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        
+                        <!-- Item 1 -->
+                        <div class="food-card bg-darkCard rounded-2xl border border-copper-900/80 overflow-hidden flex flex-col justify-between">
+                            <div class="p-5">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="bg-copper-900/80 text-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">House Special</span>
+                                    <span class="font-bold text-amberGold text-base">Rs. 580</span>
+                                </div>
+                                <h3 class="font-serif font-bold text-xl text-white mb-2">Beef Chapli Kabab</h3>
+                                <p class="text-gray-400 text-xs line-clamp-3 leading-relaxed">
+                                    Authentic Peshawari fried beef patty with diced tomatoes, crushed pomegranate seeds, cumin and herbs.
+                                </p>
+                            </div>
+                            <div class="px-5 pb-5 pt-2 border-t border-copper-900/40">
+                                <button onclick="addToCart(1)" class="w-full py-2.5 rounded-xl bg-copper-900/60 hover:bg-copper-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="plus" class="w-4 h-4 text-amberGold"></i> Add to Order
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="food-card bg-darkCard rounded-2xl border border-copper-900/80 overflow-hidden flex flex-col justify-between">
+                            <div class="p-5">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="bg-spicyRed/20 text-spicyRed text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Charcoal Grill</span>
+                                    <span class="font-bold text-amberGold text-base">Rs. 650</span>
+                                </div>
+                                <h3 class="font-serif font-bold text-xl text-white mb-2">Beef Seekh Kabab (4 Pcs)</h3>
+                                <p class="text-gray-400 text-xs line-clamp-3 leading-relaxed">
+                                    Juicy charcoal-skewered minced beef marinated in traditional garam masala and green coriander.
+                                </p>
+                            </div>
+                            <div class="px-5 pb-5 pt-2 border-t border-copper-900/40">
+                                <button onclick="addToCart(2)" class="w-full py-2.5 rounded-xl bg-copper-900/60 hover:bg-copper-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="plus" class="w-4 h-4 text-amberGold"></i> Add to Order
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="food-card bg-darkCard rounded-2xl border border-copper-900/80 overflow-hidden flex flex-col justify-between">
+                            <div class="p-5">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="bg-amber-900/40 text-amber-300 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Authentic Wok</span>
+                                    <span class="font-bold text-amberGold text-base">Rs. 1,450</span>
+                                </div>
+                                <h3 class="font-serif font-bold text-xl text-white mb-2">Shinwari Mutton Karahi</h3>
+                                <p class="text-gray-400 text-xs line-clamp-3 leading-relaxed">
+                                    Cooked in pure animal fat, fresh tomatoes, salt, and green chillies. Minimal spices, maximum tender taste.
+                                </p>
+                            </div>
+                            <div class="px-5 pb-5 pt-2 border-t border-copper-900/40">
+                                <button onclick="addToCart(3)" class="w-full py-2.5 rounded-xl bg-copper-900/60 hover:bg-copper-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="plus" class="w-4 h-4 text-amberGold"></i> Add to Order
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="food-card bg-darkCard rounded-2xl border border-copper-900/80 overflow-hidden flex flex-col justify-between">
+                            <div class="p-5">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="bg-amberGold/20 text-amberGold text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Morning Special</span>
+                                    <span class="font-bold text-amberGold text-base">Rs. 380</span>
+                                </div>
+                                <h3 class="font-serif font-bold text-xl text-white mb-2">Peshawari Halwa Puri</h3>
+                                <p class="text-gray-400 text-xs line-clamp-3 leading-relaxed">
+                                    2 Crispy light puris served with rich suji halwa, spicy chana masala, and tangy aloo bhujia.
+                                </p>
+                            </div>
+                            <div class="px-5 pb-5 pt-2 border-t border-copper-900/40">
+                                <button onclick="addToCart(4)" class="w-full py-2.5 rounded-xl bg-copper-900/60 hover:bg-copper-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="plus" class="w-4 h-4 text-amberGold"></i> Add to Order
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Heritage Narrative Teaser -->
+            <section class="py-20 relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <span class="text-amberGold text-xs font-bold uppercase tracking-widest font-heritage">From Qissa Khwani Bazaar To Rawalpindi</span>
+                            <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                                Where Century-Old Recipes Meet Flame & Charcoal
+                            </h2>
+                            <p class="text-gray-300 text-base leading-relaxed">
+                                "Kisa Khani Kabab invites you to savor the art of kabab-making. We blend age-old recipes from the iconic bazaar of storytellers with fresh ingredients to create unforgettable kabab experiences."
+                            </p>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                From succulent Chapli kababs and seekh kababs to tender boti kababs and hearty Peshawari breakfast, our menu offers a symphony of rich flavors that will tantalize your taste buds.
+                            </p>
+                            <div class="pt-2">
+                                <button onclick="switchPage('heritage')" class="px-6 py-3 rounded-xl bg-copper-900/80 hover:bg-copper-800 text-amber-100 font-bold text-sm border border-copper-700 transition-all flex items-center gap-2">
+                                    Read Our Full Story <i data-lucide="book-open" class="w-4 h-4 text-amberGold"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Stats Box Grid -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="glass-panel p-6 rounded-2xl text-center">
+                                <i data-lucide="star" class="w-8 h-8 text-amberGold mx-auto mb-2"></i>
+                                <span class="font-serif text-3xl font-black text-white">4.2 / 5</span>
+                                <p class="text-xs text-gray-400 mt-1">150+ Verified Google Reviews</p>
+                            </div>
+                            <div class="glass-panel p-6 rounded-2xl text-center">
+                                <i data-lucide="thumbs-up" class="w-8 h-8 text-amberGold mx-auto mb-2"></i>
+                                <span class="font-serif text-3xl font-black text-white">5.0 / 5</span>
+                                <p class="text-xs text-gray-400 mt-1">Facebook Community Score</p>
+                            </div>
+                            <div class="glass-panel p-6 rounded-2xl text-center">
+                                <i data-lucide="clock" class="w-8 h-8 text-amberGold mx-auto mb-2"></i>
+                                <span class="font-serif text-3xl font-black text-white">11 PM</span>
+                                <p class="text-xs text-gray-400 mt-1">Daily Closing • Delivery till 11:30</p>
+                            </div>
+                            <div class="glass-panel p-6 rounded-2xl text-center">
+                                <i data-lucide="map-pin" class="w-8 h-8 text-amberGold mx-auto mb-2"></i>
+                                <span class="font-serif text-2xl font-black text-white">Chour Harpal</span>
+                                <p class="text-xs text-gray-400 mt-1">Rawalpindi, Pakistan</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ================= PAGE 2: FULL MENU PAGE ================= -->
+        <div id="page-menu" class="page-view py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Page Title Header -->
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-amberGold text-xs font-extrabold uppercase tracking-widest font-heritage">Fresh Daily • Charcoal Fired</span>
+                    <h1 class="font-serif text-4xl sm:text-5xl font-black text-white mt-1">Our Culinary Menu</h1>
+                    <p class="text-gray-400 text-sm mt-3">Select your favorites below, add them to your order bag, and place your order directly via WhatsApp or Phone!</p>
+                </div>
+
+                <!-- Search and Filters Bar -->
+                <div class="glass-panel p-4 rounded-2xl mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
+                    
+                    <!-- Search Input -->
+                    <div class="relative w-full md:w-80">
+                        <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                        <input type="text" id="menu-search" onkeyup="filterMenu()" placeholder="Search kababs, karahi, naan..." class="w-full bg-charcoal text-white text-sm pl-10 pr-4 py-2.5 rounded-xl border border-copper-900 focus:outline-none focus:border-amberGold transition-colors placeholder:text-gray-500">
+                    </div>
+
+                    <!-- Category Pills -->
+                    <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none" id="category-pills">
+                        <button onclick="setCategory('all')" class="cat-pill active px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-amberGold text-black transition-all">All Items</button>
+                        <button onclick="setCategory('chapli')" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-charcoal text-gray-300 hover:text-amberGold border border-copper-900 transition-all">Chapli Kababs</button>
+                        <button onclick="setCategory('bbq')" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-charcoal text-gray-300 hover:text-amberGold border border-copper-900 transition-all">BBQ & Tikka</button>
+                        <button onclick="setCategory('karahi')" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-charcoal text-gray-300 hover:text-amberGold border border-copper-900 transition-all">Karahi & Handi</button>
+                        <button onclick="setCategory('breakfast')" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-charcoal text-gray-300 hover:text-amberGold border border-copper-900 transition-all">Sahar Breakfast</button>
+                        <button onclick="setCategory('breads')" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-charcoal text-gray-300 hover:text-amberGold border border-copper-900 transition-all">Breads & Drinks</button>
+                    </div>
+
+                </div>
+
+                <!-- Menu Items Grid Container -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-grid">
+                    <!-- Populated dynamically by JavaScript -->
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= PAGE 3: SAHAR BREAKFAST SPECIAL ================= -->
+        <div id="page-breakfast" class="page-view py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="relative rounded-3xl overflow-hidden border border-amberGold/30 bg-gradient-to-r from-copper-950 via-darkCard to-charcoal p-8 sm:p-12 mb-12 shadow-2xl">
+                    <div class="max-w-2xl">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amberGold/20 text-amberGold text-xs font-extrabold uppercase mb-4">
+                            <i data-lucide="sun" class="w-4 h-4"></i> Morning Culinary Special
+                        </span>
+                        <h1 class="font-serif text-4xl sm:text-6xl font-black text-white leading-tight">
+                            Peshawari Sahar Breakfast
+                        </h1>
+                        <p class="text-gray-300 text-base mt-4 leading-relaxed">
+                            Start your morning with authentic traditional flavors! Piping hot Halwa Puri, slow-simmered Peshawari Nehari, Siri Paye, and freshly baked Roghani Naans paired with special Doodh Patti tea.
+                        </p>
+                        <div class="mt-6 flex flex-wrap gap-4 text-xs font-semibold text-amber-200">
+                            <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-amberGold"></i> Freshly Fried Puris</span>
+                            <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-amberGold"></i> Desi Ghee Halwa</span>
+                            <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-amberGold"></i> Cardamom Peshawari Qahwa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="font-serif text-2xl font-bold text-white mb-6">Breakfast Offerings</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="breakfast-grid">
+                    <!-- Populated by JS -->
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= PAGE 4: HERITAGE & ABOUT ================= -->
+        <div id="page-heritage" class="page-view py-12">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                
+                <div class="text-center space-y-4">
+                    <span class="text-amberGold text-xs font-extrabold uppercase tracking-widest font-heritage">Our Roots & Passion</span>
+                    <h1 class="font-serif text-4xl sm:text-5xl font-black text-white">The Legacy of Kisa Khani</h1>
+                    <p class="text-gray-400 text-base max-w-2xl mx-auto">
+                        Named after the world-renowned Qissa Khwani Bazaar (The Bazaar of Storytellers), our kitchen brings centuries of culinary mastery to Rawalpindi.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="glass-panel p-8 rounded-3xl space-y-4">
+                        <h3 class="font-serif text-2xl font-bold text-amberGold">The Art of Kabab-Making</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "Kisa Khani Kabab invites you to savor the art of kabab-making. Our menu features a delectable array of traditional and innovative kababs, expertly grilled to perfection along with breakfast."
+                        </p>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "Embark on a culinary journey with Kisa Khani Kabab. We blend age-old recipes with modern techniques to create unforgettable kabab experiences. From succulent Chapli kababs and seekh kababs to tender boti kababs, our menu offers a symphony of flavors that will tantalize you."
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-darkCard p-6 rounded-2xl border border-copper-900/60 flex items-start gap-4">
+                            <div class="p-3 rounded-xl bg-copper-900/60 text-amberGold shrink-0">
+                                <i data-lucide="flame" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Charcoal Fire Slow Cooking</h4>
+                                <p class="text-xs text-gray-400 mt-1">We never rush our grilling. Every seekh and boti kabab is slow-smoked over white embers for deep charcoal flavor.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-darkCard p-6 rounded-2xl border border-copper-900/60 flex items-start gap-4">
+                            <div class="p-3 rounded-xl bg-copper-900/60 text-amberGold shrink-0">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Hand-Chopped Fresh Meat Daily</h4>
+                                <p class="text-xs text-gray-400 mt-1">100% Halal certified, fresh daily meat minced with authentic herbs, pomegranates, and roasted spice blends.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-darkCard p-6 rounded-2xl border border-copper-900/60 flex items-start gap-4">
+                            <div class="p-3 rounded-xl bg-copper-900/60 text-amberGold shrink-0">
+                                <i data-lucide="heart" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Pashtun Hospitality</h4>
+                                <p class="text-xs text-gray-400 mt-1">Whether dining with family or getting takeaway, experience warm and respectful traditional guest service.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= PAGE 5: REVIEWS ================= -->
+        <div id="page-reviews" class="page-view py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-amberGold text-xs font-extrabold uppercase tracking-widest font-heritage">Customer Feedback</span>
+                    <h1 class="font-serif text-4xl sm:text-5xl font-black text-white mt-1">Loved By Foodies</h1>
+                    <p class="text-gray-400 text-sm mt-2">Rated 4.2 / 5 on Google with over 150+ reviews, and 5/5 on Facebook!</p>
+                </div>
+
+                <!-- Reviews Summary Bar -->
+                <div class="glass-panel p-6 rounded-3xl mb-12 grid sm:grid-cols-3 gap-6 text-center">
+                    <div class="space-y-1">
+                        <span class="font-serif text-4xl font-black text-amberGold">4.2 / 5</span>
+                        <div class="flex justify-center text-amberGold">
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star-half" class="w-4 h-4 fill-amberGold"></i>
+                        </div>
+                        <p class="text-xs text-gray-400">150+ Google Reviews</p>
+                    </div>
+
+                    <div class="space-y-1 border-y sm:border-y-0 sm:border-x border-copper-900/60 py-4 sm:py-0">
+                        <span class="font-serif text-4xl font-black text-amberGold">5.0 / 5</span>
+                        <div class="flex justify-center text-amberGold">
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                        </div>
+                        <p class="text-xs text-gray-400">Facebook Page Score</p>
+                    </div>
+
+                    <div class="space-y-1 flex flex-col items-center justify-center">
+                        <button onclick="openReviewModal()" class="px-5 py-2.5 rounded-xl bg-copper-700 hover:bg-copper-600 text-white font-bold text-xs transition-all flex items-center gap-2">
+                            <i data-lucide="edit-3" class="w-4 h-4"></i> Write a Review
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Reviews Grid -->
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-darkCard p-6 rounded-2xl border border-copper-900/60 space-y-3">
+                        <div class="flex text-amberGold">
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                        </div>
+                        <p class="text-xs text-gray-300 italic leading-relaxed">"The Chapli Kabab here is unbelievable! Piping hot, crispy edges, and juicy inside. Best authentic Peshawari flavor in Chour Harpal, Rawalpindi."</p>
+                        <div class="pt-2 border-t border-copper-900/40 flex justify-between items-center text-xs text-gray-400">
+                            <span class="font-bold text-white">Tariq Mahmood</span>
+                            <span>Google Review</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-darkCard p-6 rounded-2xl border border-copper-900/60 space-y-3">
+                        <div class="flex text-amberGold">
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                        </div>
+                        <p class="text-xs text-gray-300 italic leading-relaxed">"Tried their Halwa Puri Sahar breakfast on Sunday morning. The puri was light and non-greasy, and the Doodh Patti tea was the perfect morning finish."</p>
+                        <div class="pt-2 border-t border-copper-900/40 flex justify-between items-center text-xs text-gray-400">
+                            <span class="font-bold text-white">Usman Khan</span>
+                            <span>Facebook Review</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-darkCard p-6 rounded-2xl border border-copper-900/60 space-y-3">
+                        <div class="flex text-amberGold">
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amberGold"></i>
+                        </div>
+                        <p class="text-xs text-gray-300 italic leading-relaxed">"Shinwari Mutton Karahi cooked in fat with fresh green chillies is a treat! Great quantity, fast delivery via WhatsApp order."</p>
+                        <div class="pt-2 border-t border-copper-900/40 flex justify-between items-center text-xs text-gray-400">
+                            <span class="font-bold text-white">Bilal Ahmed</span>
+                            <span>Google Review</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= PAGE 6: CONTACT & LOCATION ================= -->
+        <div id="page-contact" class="page-view py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-amberGold text-xs font-extrabold uppercase tracking-widest font-heritage">Visit Us In Rawalpindi</span>
+                    <h1 class="font-serif text-4xl sm:text-5xl font-black text-white mt-1">Location & Contact</h1>
+                    <p class="text-gray-400 text-sm mt-2">Come dine with family or order online for fast doorstep delivery in Rawalpindi.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Location & Info Cards -->
+                    <div class="lg:col-span-5 space-y-6">
+                        
+                        <div class="bg-darkCard p-6 rounded-2xl border border-copper-900/60 space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="p-3 rounded-xl bg-copper-900/60 text-amberGold shrink-0">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-base">Address</h3>
+                                    <p class="text-xs text-gray-300 mt-1 leading-relaxed">400 Street Number 2, Chour Harpal, Rawalpindi, Punjab 46000, Pakistan</p>
+                                    <a href="https://maps.google.com/?cid=1481639779394988639" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-amberGold hover:underline font-semibold mt-2">
+                                        Open in Google Maps <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-darkCard p-6 rounded-2xl border border-copper-900/60 space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="p-3 rounded-xl bg-copper-900/60 text-amberGold shrink-0">
+                                    <i data-lucide="phone" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-base">Phone & WhatsApp</h3>
+                                    <p class="text-xs text-gray-300 mt-1">Phone: (051) 6161229 / +92 51 6161229</p>
+                                    <div class="flex gap-3 mt-3">
+                                        <a href="tel:0516161229" class="px-4 py-2 rounded-xl bg-copper-700 text-white text-xs font-bold flex items-center gap-2">
+                                            <i data-lucide="phone-call" class="w-3.5 h-3.5"></i> Call Now
+                                        </a>
+                                        <a href="https://wa.me/message/KC3DRS3TH23FO1" target="_blank" class="px-4 py-2 rounded-xl bg-emerald-700 text-white text-xs font-bold flex items-center gap-2">
+                                            <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-darkCard p-6 rounded-2xl border border-copper-900/60 space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="p-3 rounded-xl bg-copper-900/60 text-amberGold shrink-0">
+                                    <i data-lucide="clock" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-base">Operating Hours</h3>
+                                    <p class="text-xs text-gray-300 mt-1">Monday – Sunday: 12:00 PM – 11:00 PM</p>
+                                    <p class="text-xs text-amber-200/80 mt-0.5">Delivery Service Ends: 11:30 PM</p>
+                                    <span class="inline-block mt-2 px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-400 text-[10px] font-bold border border-emerald-800">
+                                        Service Option: Cash Only
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Media Links -->
+                        <div class="p-4 rounded-2xl bg-charcoal border border-copper-900 flex items-center justify-between">
+                            <span class="text-xs font-bold text-gray-300">Follow Our Social Pages:</span>
+                            <div class="flex gap-3">
+                                <a href="https://www.instagram.com/kisakhanikabab/?hl=en" target="_blank" class="p-2.5 rounded-xl bg-darkCard border border-copper-800 text-amberGold hover:bg-copper-900 transition-colors">
+                                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                                </a>
+                                <a href="https://www.facebook.com/kisakhanikabab/" target="_blank" class="p-2.5 rounded-xl bg-darkCard border border-copper-800 text-amberGold hover:bg-copper-900 transition-colors">
+                                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Map Preview Card -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-darkCard p-4 rounded-3xl border border-copper-900/80 space-y-4">
+                            <div class="flex justify-between items-center px-2">
+                                <h3 class="font-bold text-white text-sm flex items-center gap-2">
+                                    <i data-lucide="navigation" class="w-4 h-4 text-amberGold"></i> Interactive Location Map
+                                </h3>
+                                <span class="text-xs text-gray-400">Rawalpindi, 46000</span>
+                            </div>
+                            
+                            <!-- Embedded Map View Container -->
+                            <div class="w-full h-[400px] rounded-2xl overflow-hidden border border-copper-800/60 bg-zinc-900 relative">
+                                <iframe 
+                                    title="Kisa Khani Kabab Map"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.083042078693!2d73.02324!3d33.6291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df9596e14e42cb%3A0x148e97877fa12a5f!2sKISA%20KHANI%20KABAB%20RESTAURANT!5e0!3m2!1sen!2spk!4v1700000000000!5m2!1sen!2spk" 
+                                    class="w-full h-full border-0 filter grayscale opacity-90 hover:grayscale-0 transition-all duration-500" 
+                                    allowfullscreen="" 
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Slide-over Shopping Cart Drawer -->
+    <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/70 z-50 hidden transition-opacity duration-300 opacity-0" onclick="toggleCartDrawer()"></div>
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-darkCard border-l border-copper-800 z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between shadow-2xl">
+        
+        <!-- Cart Header -->
+        <div class="p-5 border-b border-copper-900 flex justify-between items-center bg-charcoal">
+            <div class="flex items-center gap-2">
+                <i data-lucide="shopping-bag" class="w-5 h-5 text-amberGold"></i>
+                <h3 class="font-serif font-bold text-lg text-white">Your Food Order</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-copper-900">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-items-container" class="p-5 flex-grow overflow-y-auto space-y-4">
+            <!-- Injected via JS -->
+        </div>
+
+        <!-- Cart Footer & Checkout -->
+        <div class="p-5 border-t border-copper-900 bg-charcoal space-y-4">
+            
+            <!-- Delivery vs Takeaway selector -->
+            <div class="grid grid-cols-2 gap-2 bg-darkCard p-1 rounded-xl border border-copper-900">
+                <button onclick="setOrderType('delivery')" id="btn-order-delivery" class="py-1.5 rounded-lg text-xs font-bold text-amberGold bg-copper-900/60 transition-all">
+                    Delivery
+                </button>
+                <button onclick="setOrderType('takeaway')" id="btn-order-takeaway" class="py-1.5 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-all">
+                    Takeaway
+                </button>
+            </div>
+
+            <!-- Total Calculation -->
+            <div class="space-y-1 text-sm border-t border-copper-900/60 pt-3">
+                <div class="flex justify-between text-gray-400">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal" class="font-semibold text-white">Rs. 0</span>
+                </div>
+                <div class="flex justify-between text-gray-400 text-xs">
+                    <span>Delivery Fee:</span>
+                    <span id="cart-delivery" class="text-amber-200">Rs. 100</span>
+                </div>
+                <div class="flex justify-between text-base font-extrabold text-white pt-2 border-t border-copper-900">
+                    <span>Total Amount:</span>
+                    <span id="cart-grandtotal" class="text-amberGold font-serif text-lg">Rs. 0</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-2">
+                <button onclick="sendWhatsAppOrder()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg flex items-center justify-center gap-2 transition-all">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i> Order via WhatsApp
+                </button>
+                <a href="tel:0516161229" class="w-full py-2.5 rounded-xl bg-copper-900/60 hover:bg-copper-800 text-amber-200 font-semibold text-xs flex items-center justify-center gap-2 border border-copper-800">
+                    <i data-lucide="phone" class="w-4 h-4"></i> Or Call (051) 6161229
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Table Reservation Modal -->
+    <div id="reservation-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-darkCard border border-copper-800 rounded-3xl max-w-md w-full p-6 space-y-6 relative shadow-glow">
+            
+            <div class="flex justify-between items-center border-b border-copper-900 pb-4">
+                <div>
+                    <h3 class="font-serif font-bold text-xl text-white">Reserve a Table</h3>
+                    <p class="text-xs text-gray-400 mt-0.5">Kisa Khani Kabab Restaurant, Rawalpindi</p>
+                </div>
+                <button onclick="closeReservationModal()" class="p-1.5 rounded-lg text-gray-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleReservationSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Your Full Name</label>
+                    <input type="text" required placeholder="e.g. Tariq Khan" class="w-full bg-charcoal text-white text-sm px-4 py-2.5 rounded-xl border border-copper-900 focus:outline-none focus:border-amberGold">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Phone Number</label>
+                        <input type="tel" required placeholder="0300 1234567" class="w-full bg-charcoal text-white text-sm px-4 py-2.5 rounded-xl border border-copper-900 focus:outline-none focus:border-amberGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Guests Count</label>
+                        <select class="w-full bg-charcoal text-white text-sm px-4 py-2.5 rounded-xl border border-copper-900 focus:outline-none focus:border-amberGold">
+                            <option>2 Persons</option>
+                            <option>4 Persons</option>
+                            <option>6 Persons</option>
+                            <option>8+ Family Hall</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Reservation Date</label>
+                        <input type="date" required class="w-full bg-charcoal text-white text-sm px-4 py-2.5 rounded-xl border border-copper-900 focus:outline-none focus:border-amberGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Time Slot</label>
+                        <select class="w-full bg-charcoal text-white text-sm px-4 py-2.5 rounded-xl border border-copper-900 focus:outline-none focus:border-amberGold">
+                            <option>01:00 PM (Lunch)</option>
+                            <option>07:00 PM (Dinner)</option>
+                            <option>09:00 PM (Peak Dinner)</option>
+                            <option>10:00 PM (Late Night)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-copper-700 hover:bg-copper-600 text-white font-bold text-sm shadow-md transition-all">
+                    Confirm Reservation Request
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Write Review Modal -->
+    <div id="review-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-darkCard border border-copper-800 rounded-3xl max-w-md w-full p-6 space-y-6 relative shadow-2xl">
+            <div class="flex justify-between items-center border-b border-copper-900 pb-4">
+                <h3 class="font-serif font-bold text-xl text-white">Share Your Dining Experience</h3>
+                <button onclick="closeReviewModal()" class="p-1.5 rounded-lg text-gray-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <form onsubmit="handleReviewSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Your Name</label>
+                    <input type="text" required placeholder="Enter your name" class="w-full bg-charcoal text-white text-sm px-4 py-2.5 rounded-xl border border-copper-900 focus:outline-none focus:border-amberGold">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Rating</label>
+                    <select class="w-full bg-charcoal text-white text-sm px-4 py-2.5 rounded-xl border border-copper-900 focus:outline-none focus:border-amberGold">
+                        <option>⭐⭐⭐⭐⭐ (5/5) Excellent Authentic Kababs</option>
+                        <option>⭐⭐⭐⭐ (4/5) Very Good</option>
+                        <option>⭐⭐⭐ (3/5) Average</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Your Feedback / Review</label>
+                    <textarea required rows="3" placeholder="Tell us about the flavor, service, or breakfast..." class="w-full bg-charcoal text-white text-sm px-4 py-2.5 rounded-xl border border-copper-900 focus:outline-none focus:border-amberGold resize-none"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-copper-700 hover:bg-copper-600 text-white font-bold text-sm">
+                    Submit Review
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Website Footer -->
+    <footer class="bg-charcoal border-t border-copper-900/80 pt-16 pb-8 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1: Brand -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-spicyRed flex items-center justify-center">
+                            <i data-lucide="flame" class="w-5 h-5 text-amberGold"></i>
+                        </div>
+                        <span class="font-heritage text-lg font-bold text-white tracking-wider">
+                            KISA KHANI <span class="text-amberGold">KABAB</span>
+                        </span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Where flavor meets tradition. Serving authentic Peshawari Chapli Kababs, Seekh Kababs, Shinwari Karahi, and traditional Sahar Breakfast in Rawalpindi.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://www.instagram.com/kisakhanikabab/?hl=en" target="_blank" class="p-2 rounded-lg bg-darkCard border border-copper-900 text-amberGold hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://www.facebook.com/kisakhanikabab/" target="_blank" class="p-2 rounded-lg bg-darkCard border border-copper-900 text-amberGold hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-base mb-4">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#" onclick="switchPage('home'); return false;" class="hover:text-amberGold transition-colors">Home Page</a></li>
+                        <li><a href="#" onclick="switchPage('menu'); return false;" class="hover:text-amberGold transition-colors">Our Full Menu</a></li>
+                        <li><a href="#" onclick="switchPage('breakfast'); return false;" class="hover:text-amberGold transition-colors">Sahar Breakfast</a></li>
+                        <li><a href="#" onclick="switchPage('heritage'); return false;" class="hover:text-amberGold transition-colors">Heritage & Story</a></li>
+                        <li><a href="#" onclick="switchPage('reviews'); return false;" class="hover:text-amberGold transition-colors">Customer Reviews</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contact & Hours -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-base mb-4">Timings & Service</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-amberGold"></i> Mon - Sun: 12:00 PM – 11:00 PM</li>
+                        <li class="flex items-center gap-2"><i data-lucide="truck" class="w-3.5 h-3.5 text-amberGold"></i> Delivery till 11:30 PM</li>
+                        <li class="flex items-center gap-2"><i data-lucide="banknote" class="w-3.5 h-3.5 text-amberGold"></i> Cash Only Service</li>
+                        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-amberGold"></i> Phone: (051) 6161229</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Location -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-base mb-4">Address</h4>
+                    <p class="text-xs leading-relaxed text-gray-400">
+                        400 Street Number 2, Chour Harpal, Rawalpindi, Punjab 46000, Pakistan
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-copper-900/60 flex items-center gap-2 text-xs text-amberGold">
+                        <i data-lucide="award" class="w-4 h-4"></i> 4.2 Rating (150+ Reviews)
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright Bar -->
+            <div class="pt-8 border-t border-copper-900/60 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+                <p>&copy; <span id="year"></span> Kisa Khani Kabab Restaurant. All Rights Reserved.</p>
+                <p>Authentic Peshawari Cuisine in Rawalpindi</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Overlay -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-charcoal border border-amberGold text-white px-6 py-3 rounded-full shadow-glow z-[100] flex items-center gap-3 font-semibold text-xs">
+        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+        <span id="toast-msg">Item added to your order bag!</span>
+    </div>
+
+    <script>
+        // --- Initialize Icons & Year ---
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- Menu Data Store ---
+        const menuItems = [
+            {
+                id: 1,
+                name: "Beef Chapli Kabab",
+                cat: "chapli",
+                price: 580,
+                desc: "Authentic Peshawari fried beef patty with diced tomatoes, crushed pomegranate seeds, cumin and herbs.",
+                spicy: true,
+                popular: true
+            },
+            {
+                id: 2,
+                name: "Beef Seekh Kabab (4 Pcs)",
+                cat: "bbq",
+                price: 650,
+                desc: "Juicy charcoal-skewered minced beef marinated in traditional garam masala and green coriander.",
+                spicy: false,
+                popular: true
+            },
+            {
+                id: 3,
+                name: "Shinwari Mutton Karahi (Half KG)",
+                cat: "karahi",
+                price: 1450,
+                desc: "Cooked in pure animal fat, fresh tomatoes, salt, and green chillies. Minimal spices, maximum tender taste.",
+                spicy: false,
+                popular: true
+            },
+            {
+                id: 4,
+                name: "Peshawari Halwa Puri Thali",
+                cat: "breakfast",
+                price: 380,
+                desc: "2 Crispy light puris served with rich suji halwa, spicy chana masala, and tangy aloo bhujia.",
+                spicy: false,
+                popular: true
+            },
+            {
+                id: 5,
+                name: "Chicken Boti Kabab (Plate)",
+                cat: "bbq",
+                price: 520,
+                desc: "Boneless tender chicken chunks marinated in yoghurt, lemon, and tandoori charcoal spices.",
+                spicy: true,
+                popular: false
+            },
+            {
+                id: 6,
+                name: "Special Peshawari Nehari",
+                cat: "breakfast",
+                price: 620,
+                desc: "Slow-cooked beef shank stew topped with ginger, green chilli, lemon, and sizzling desi ghee.",
+                spicy: true,
+                popular: false
+            },
+            {
+                id: 7,
+                name: "Siri Paye (Full Bowl)",
+                cat: "breakfast",
+                price: 550,
+                desc: "Traditional mutton trotters cooked overnight in aromatic spices and thick golden gravy.",
+                spicy: false,
+                popular: false
+            },
+            {
+                id: 8,
+                name: "Special Roghani Naan",
+                cat: "breads",
+                price: 90,
+                desc: "Oven-baked tandoori flatbread brushed with butter and sprinkled with sesame seeds.",
+                spicy: false,
+                popular: false
+            },
+            {
+                id: 9,
+                name: "Peshawari Cardamom Qahwa",
+                cat: "breads",
+                price: 120,
+                desc: "Traditional green tea brewed with green cardamom, saffron threads, and served with gur (jaggery).",
+                spicy: false,
+                popular: false
+            }
+        ];
+
+        let cart = [];
+        let activeCategory = 'all';
+        let orderType = 'delivery';
+
+        // --- Page View Switching Logic ---
+        function switchPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(p => p.classList.remove('active'));
+
+            // Show selected page
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update active state in nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('bg-copper-700', 'text-white');
+                btn.classList.add('text-gray-300');
+            });
+
+            const activeBtn = document.getElementById('nav-' + pageId);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-copper-700', 'text-white');
+                activeBtn.classList.remove('text-gray-300');
+            }
+        }
+
+        // --- Mobile Navigation Toggle ---
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobile-nav');
+            const icon = document.getElementById('menu-icon');
+            if (nav.classList.contains('hidden')) {
+                nav.classList.remove('hidden');
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                nav.classList.add('hidden');
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        // --- Menu Rendering Logic ---
+        function renderMenu() {
+            const grid = document.getElementById('menu-grid');
+            if (!grid) return;
+
+            const searchQuery = (document.getElementById('menu-search')?.value || '').toLowerCase();
+
+            const filtered = menuItems.filter(item => {
+                const matchesCat = (activeCategory === 'all') || (item.cat === activeCategory);
+                const matchesSearch = item.name.toLowerCase().includes(searchQuery) || item.desc.toLowerCase().includes(searchQuery);
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-gray-500">
+                        <i data-lucide="utensils-crossed" class="w-12 h-12 mx-auto mb-3 opacity-40"></i>
+                        <p class="font-bold">No dishes found matching your query.</p>
+                    </div>`;
+                lucide.createIcons();
+                return;
+            }
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="food-card bg-darkCard rounded-2xl border border-copper-900/80 overflow-hidden flex flex-col justify-between">
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-start">
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${item.spicy ? 'bg-spicyRed/20 text-spicyRed' : 'bg-copper-900/80 text-amber-200'}">
+                                ${item.spicy ? '🔥 Spicy' : 'Traditional'}
+                            </span>
+                            <span class="font-serif font-black text-amberGold text-lg">Rs. ${item.price}</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-white">${item.name}</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed line-clamp-3">${item.desc}</p>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart(${item.id})" class="w-full py-3 rounded-xl bg-copper-900/80 hover:bg-copper-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-2 border border-copper-800">
+                            <i data-lucide="plus" class="w-4 h-4 text-amberGold"></i> Add to Order Bag
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // --- Render Sahar Breakfast Grid ---
+        function renderBreakfast() {
+            const grid = document.getElementById('breakfast-grid');
+            if (!grid) return;
+
+            const items = menuItems.filter(i => i.cat === 'breakfast' || i.name.includes('Roghani') || i.name.includes('Qahwa'));
+            
+            grid.innerHTML = items.map(item => `
+                <div class="food-card bg-darkCard rounded-2xl border border-copper-900/80 p-6 flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-amberGold text-xs font-bold uppercase">Sahar Choice</span>
+                            <span class="font-serif font-bold text-amberGold text-base">Rs. ${item.price}</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-white">${item.name}</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">${item.desc}</p>
+                    </div>
+                    <button onclick="addToCart(${item.id})" class="w-full py-2.5 rounded-xl bg-copper-700 hover:bg-copper-600 text-white font-bold text-xs transition-colors flex items-center justify-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Add to Order
+                    </button>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            const pills = document.querySelectorAll('.cat-pill');
+            pills.forEach(p => {
+                p.classList.remove('bg-amberGold', 'text-black');
+                p.classList.add('bg-charcoal', 'text-gray-300');
+            });
+            event.target.classList.add('bg-amberGold', 'text-black');
+            event.target.classList.remove('bg-charcoal', 'text-gray-300');
+            renderMenu();
+        }
+
+        function filterMenu() {
+            renderMenu();
+        }
+
+        // --- Cart Management Logic ---
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-drawer-overlay');
+            
+            if (drawer.classList.contains('translate-x-full')) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+                drawer.classList.remove('translate-x-full');
+            } else {
+                overlay.classList.add('opacity-0');
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function addToCart(productId) {
+            const item = menuItems.find(p => p.id === productId);
+            if (!item) return;
+
+            const existing = cart.find(i => i.id === productId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...item, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast(`Added "${item.name}" to your order!`);
+        }
+
+        function updateCartQty(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function setOrderType(type) {
+            orderType = type;
+            const btnDel = document.getElementById('btn-order-delivery');
+            const btnTak = document.getElementById('btn-order-takeaway');
+
+            if (type === 'delivery') {
+                btnDel.classList.add('bg-copper-900/60', 'text-amberGold');
+                btnDel.classList.remove('text-gray-400');
+                btnTak.classList.remove('bg-copper-900/60', 'text-amberGold');
+                btnTak.classList.add('text-gray-400');
+            } else {
+                btnTak.classList.add('bg-copper-900/60', 'text-amberGold');
+                btnTak.classList.remove('text-gray-400');
+                btnDel.classList.remove('bg-copper-900/60', 'text-amberGold');
+                btnDel.classList.add('text-gray-400');
+            }
+            updateCartTotals();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge');
+            const container = document.getElementById('cart-items-container');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.textContent = totalItems;
+            if (totalItems > 0) {
+                badge.classList.remove('scale-0');
+            } else {
+                badge.classList.add('scale-0');
+            }
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-64 flex flex-col items-center justify-center text-gray-500 text-center">
+                        <i data-lucide="shopping-bag" class="w-12 h-12 mb-3 opacity-30"></i>
+                        <p class="text-sm">Your order bag is hungry!</p>
+                        <span class="text-xs text-gray-600 mt-1">Select items from our menu.</span>
+                    </div>`;
+                lucide.createIcons();
+                updateCartTotals();
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="bg-charcoal p-3.5 rounded-xl border border-copper-900 flex justify-between items-center">
+                    <div class="space-y-0.5">
+                        <h4 class="font-bold text-white text-xs">${item.name}</h4>
+                        <span class="text-amberGold text-xs font-semibold">Rs. ${item.price * item.qty}</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-darkCard px-2 py-1 rounded-lg border border-copper-900">
+                        <button onclick="updateCartQty(${item.id}, -1)" class="text-gray-400 hover:text-white font-bold text-sm px-1.5">-</button>
+                        <span class="text-xs font-bold text-white w-4 text-center">${item.qty}</span>
+                        <button onclick="updateCartQty(${item.id}, 1)" class="text-gray-400 hover:text-white font-bold text-sm px-1.5">+</button>
+                    </div>
+                </div>
+            `).join('');
+
+            updateCartTotals();
+        }
+
+        function updateCartTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const deliveryFee = (subtotal > 0 && orderType === 'delivery') ? 100 : 0;
+            const grandTotal = subtotal + deliveryFee;
+
+            document.getElementById('cart-subtotal').textContent = `Rs. ${subtotal}`;
+            document.getElementById('cart-delivery').textContent = `Rs. ${deliveryFee}`;
+            document.getElementById('cart-grandtotal').textContent = `Rs. ${grandTotal}`;
+        }
+
+        // --- WhatsApp Order Message Generator ---
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                showToast("Please add items to your order first!");
+                return;
+            }
+
+            let message = `*NEW ORDER - KISA KHANI KABAB RESTAURANT*\n`;
+            message += `----------------------------------------\n`;
+            cart.forEach(item => {
+                message += `• ${item.name} x${item.qty} = Rs. ${item.price * item.qty}\n`;
+            });
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const deliveryFee = (orderType === 'delivery') ? 100 : 0;
+            const total = subtotal + deliveryFee;
+
+            message += `----------------------------------------\n`;
+            message += `*Order Type:* ${orderType.toUpperCase()}\n`;
+            message += `*Subtotal:* Rs. ${subtotal}\n`;
+            message += `*Delivery Fee:* Rs. ${deliveryFee}\n`;
+            message += `*TOTAL AMOUNT:* Rs. ${total}\n`;
+            message += `*Service Note:* Cash Only\n`;
+            message += `----------------------------------------\n`;
+            message += `Please confirm my order & estimated delivery time in Rawalpindi. Thank you!`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/92516161229?text=${encoded}`, '_blank');
+        }
+
+        // --- Reservation Modal Handlers ---
+        function openReservationModal() {
+            document.getElementById('reservation-modal').classList.remove('hidden');
+        }
+        function closeReservationModal() {
+            document.getElementById('reservation-modal').classList.add('hidden');
+        }
+        function handleReservationSubmit(e) {
+            e.preventDefault();
+            closeReservationModal();
+            showToast("Table reservation request sent successfully!");
+        }
+
+        // --- Review Modal Handlers ---
+        function openReviewModal() {
+            document.getElementById('review-modal').classList.remove('hidden');
+        }
+        function closeReviewModal() {
+            document.getElementById('review-modal').classList.add('hidden');
+        }
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            closeReviewModal();
+            showToast("Thank you! Your review has been submitted.");
+        }
+
+        // --- Toast Notification Helper ---
+        let toastTimeout;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').textContent = msg;
+            toast.classList.add('show');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // --- On Page Load Initializers ---
+        window.onload = function() {
+            renderMenu();
+            renderBreakfast();
+            updateCartUI();
+        }
+    </script>
+</body>
+</html>
